@@ -1,0 +1,13 @@
+.login-form {
+    max-width: 400px;
+    margin: auto;
+  }
+
+.nav-item {
+    padding: 14px 16px;
+  }  
+
+.container {
+    width: 500px;
+    height: 50px;
+  }

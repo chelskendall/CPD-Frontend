@@ -1,0 +1,108 @@
+<!-- Top navigation -->
+<div>
+  <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+    <a href=":email" class="navbar-brand">CPD Tracker</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container mt-3"> </div>
+</div>
+
+<!-- Side navigation -->
+<div class="sidenav">
+  <a (click)="navigateToPersonal()">Personal Details</a><br>
+  <a href="#">Employment History</a><br>
+  <a href="#">Academic Qualifications</a><br>
+  <a href="#">Professional Affiliations</a><br>
+  <a href="#">Professional Services</a><br>
+  <a href="#">CPD Training</a><br>
+  <a href="#">Endorsements</a><br>
+</div>
+    
+<!-- Main Content -->
+<div class="container">
+<div class="row justify-content-center mt-5">
+<div class="col-md-4">
+  <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+    
+    <p-card header="Personal Details" [style]="{ width: '700px' }">
+      <div class="form-group">
+        <label>First Name</label>
+        <input
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          formControlName="firstName"
+          required
+        />
+      </div><br>
+      
+      <div class="form-group">
+        <label>Last Name</label>
+        <input
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          formControlName="lastName"
+          required
+        />
+      </div><br>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          formControlName="phone"
+          required
+        />
+      </div><br>
+      
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          formControlName="emailAddress"
+          required
+        />
+      </div><br>
+      
+      <div class="form-group">
+        <label>Mailing Address</label>
+        <textarea
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          rows="4"
+          formControlName="mailAddress"
+          required>
+        </textarea>
+      </div><br>
+
+      <div class="form-group">
+        <label>Professional Statement</label>
+        <textarea
+          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+          type="text"
+          rows="4"
+          formControlName="statement"
+          required>
+        </textarea>
+      </div><br>
+    
+      <p-button
+      label="Update"
+      styleClass="w-full"
+      type="submit">
+    </p-button>
+
+  </p-card>
+  </form>
+</div>
+</div>
+</div>

@@ -1,0 +1,99 @@
+<!-- Top navigation -->
+<div>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container mt-3"> </div>
+  </div>
+  
+  <!-- Side navigation -->
+  <div class="sidenav">
+    <a (click)="navigateToPersonal()">Personal Details</a><br>
+    <a (click)="navigateToEmployment()">Employment History</a><br>
+    <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+    <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+    <a (click)="navigateToService()">Professional Services</a><br>
+    <a (click)="navigateToCPD()">CPD Training</a><br>
+    <a (click)="navigateToEndorsement()">Endorsements</a><br>
+  </div>
+      
+  <!-- Main Content -->
+  <div class="container">
+  <div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+      <form [formGroup]="employmentForm" (ngSubmit)="onSubmit()">
+    
+      <p-card header="Employment History" [style]="{ width: '700px' }">
+        <div class="form-group">
+          <label>Job Title</label>
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="jobTitle"
+            required
+          />
+        </div><br>
+        
+        <div class="form-group">
+          <label>Employer Name</label>
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="employer"
+            required
+          />
+        </div><br>
+  
+        <div class="form-group">
+          <label>Start Date</label>
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="employStart"
+            required
+          />
+        </div><br>
+        
+        <div class="form-group">
+          <label>End Date</label>
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="employEnd"
+            required
+          />
+        </div><br>
+        
+        <div class="form-group">
+          <label>Responsibilities</label>
+          <textarea
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            rows="4"
+            formControlName="responsibilities"
+            required>
+          </textarea>
+        </div><br>
+  
+  <!--File Upload Field-->
+        
+        <p-button
+        label="Submit"
+        styleClass="w-full"
+        type="submit">
+      </p-button>
+      
+        </p-card>
+      </form>
+    </div>
+  </div>
+  </div>

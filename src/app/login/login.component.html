@@ -1,0 +1,59 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">  
+    <a href="#" class="navbar-brand">CPD Tracker</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a (click)="register()" class="btn btn-outline-light btn-sm">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="gologin()" class="btn btn-outline-light btn-sm">Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container mt-3"> </div>
+</div>
+
+<div class="container">
+<form (submit)="login($event)" class="join-form">
+  <p-card header="Login" [style]="{ width: '540px' }">
+    
+    <div class="field">
+      <label>Email:</label><br>
+      <input
+        style="margin-left:5px"
+        type="text"
+        class="form-control block w-full mb-3"
+        id="email"
+        placeholder="name@example.com"
+      /><br>
+    </div>
+
+    <div class="field">
+      <label>Password:</label><br>
+      <input
+        style="margin-left:5px"
+        type="password"
+        class="form-control block w-full mb-3"
+        id="password"
+        placeholder="Enter password"
+      />
+    </div>
+
+    <div class="forgetpassword"> 
+      <a routerLink="/users">Forget password?</a>
+    </div><br>
+
+    <br>
+    <p-button
+      label="SIGN IN"
+      styleClass="w-full"
+      type="submit"
+    ></p-button>
+    <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
+  </p-card>
+</form>
+</div>

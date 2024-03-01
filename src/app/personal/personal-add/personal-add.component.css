@@ -1,0 +1,55 @@
+/* Top navigation menu */
+.navbar {
+  position: fixed; /* Fixed top nav (stay in place on scroll) */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.nav-item {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 14px 16px;
+}
+
+/* Sidebar menu */
+.sidenav {
+height: 100%; /* Full-height */
+width: 160px; /* Set the width of the sidebar */
+position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+z-index: 2; /* Stay on top */
+top: 75px; /* Stay at the top */
+left: 0;
+background-color: #bdbbbb; /* Grey */
+overflow-x: hidden; /* Disable horizontal scroll */
+padding-top: 20px;
+}
+
+/* Sidebar menu links */
+.sidenav a {
+padding: 10px 8px 10px 16px;
+/* text-decoration: underline; */
+font-size: 15px;
+font-weight: 500;
+color: #111;
+display: block;
+}
+
+/* When you mouse over the sidebar links, change their color */
+.sidenav a:hover {
+/* color: #f1f1f1; */
+background-color: #fffefe; /* Grey */
+}
+
+hr {
+  margin: 1rem 0;
+  border-top: 1px solid rgb(7, 7, 7);
+  opacity: 0.25;
+}
+
+/* Style page content */
+.container {
+  margin-top: 70px; /* Add a top margin to avoid content overlay */
+  margin-left: 180px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  width: 400px;
+  height: 20px;
+  }
