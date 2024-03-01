@@ -20,12 +20,12 @@
 <!-- Side navigation -->
 <div class="sidenav">
   <a (click)="navigateToPersonal()">Personal Details</a><br>
-  <a href="#">Employment History</a><br>
-  <a href="#">Academic Qualifications</a><br>
-  <a href="#">Professional Affiliations</a><br>
-  <a href="#">Professional Services</a><br>
-  <a href="#">CPD Training</a><br>
-  <a href="#">Endorsements</a><br>
+  <a (click)="navigateToEmployment()">Employment History</a><br>
+  <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+  <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+  <a (click)="navigateToService()">Professional Services</a><br>
+  <a (click)="navigateToCPD()">CPD Training</a><br>
+  <a (click)="navigateToEndorsement()">Endorsements</a><br>
 </div>
     
 <!-- Main Content -->
@@ -67,49 +67,3 @@
   </div>
 </div>
 
-<!--
-<div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search by title" 
-          [(ngModel)]="title"
-        />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Personal Details List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let personal of personals; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActivePersonal(personal, i)"
-        >
-          {{ personal.firstName }}
-        </li>
-      </ul>
-  
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPersonal()">
-        Remove All
-      </button>
-    </div>
-    <div class="col-md-6">
-      <app-personal-details
-        [viewMode]="true"
-        [currentPersonal]="currentPersonal"
-      ></app-personal-details>
-    </div>
-  </div>
-  -->

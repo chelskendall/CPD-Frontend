@@ -26,7 +26,7 @@ export class EmploymentService {
   addEmployment(data: Employment): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.post(`${this.baseUrl}/newemployment`, data, { headers })
+    return this.http.post(`${this.baseUrl}/newemploy`, data, { headers })
     .pipe(catchError(this.handleError));
   }
 
@@ -34,14 +34,14 @@ export class EmploymentService {
   getEmploymentList() {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get(`${this.baseUrl}/allemployment`, { headers });
+    return this.http.get(`${this.baseUrl}/allemploy`, { headers });
   }
 
   //get one employment
   getEmployment(id: any): Observable<Employment> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get<Employment>(`${this.baseUrl}/employment/${id}`, { headers })
+    return this.http.get<Employment>(`${this.baseUrl}/employ/${id}`, { headers })
     .pipe(
       map((res: any) => {
         return res || {};
@@ -54,7 +54,7 @@ export class EmploymentService {
   updateEmployment(id: any, data: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.put(`${this.baseUrl}/updateemployment/${id}`, data, { headers })
+    return this.http.put(`${this.baseUrl}/updateemploy/${id}`, data, { headers })
     .pipe(catchError(this.handleError));
   }
 
@@ -62,7 +62,7 @@ export class EmploymentService {
   deleteEmployment(id: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.delete(`${this.baseUrl}/deleteemployment/${id}`, { headers })
+    return this.http.delete(`${this.baseUrl}/deleteemploy/${id}`, { headers })
     .pipe(catchError(this.handleError));
   }
 

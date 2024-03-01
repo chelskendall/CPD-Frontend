@@ -1,1 +1,171 @@
-<p>employment-list works!</p>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Top navigation -->
+<div>
+  <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+    <a href=':email' class="navbar-brand">CPD Tracker</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container mt-3"> </div>
+</div>
+
+<!-- Side navigation -->
+<div class="sidenav">
+  <a (click)="navigateToPersonal()">Personal Details</a><br>
+  <a (click)="navigateToEmployment()">Employment History</a><br>
+  <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+  <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+  <a (click)="navigateToService()">Professional Services</a><br>
+  <a (click)="navigateToCPD()">CPD Training</a><br>
+  <a (click)="navigateToEndorsement()">Endorsements</a><br>
+</div>
+    
+<!-- Main Content -->
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2 class="h2">Employment History Entries</h2>
+      <mat-divider fxFlex="1 0"></mat-divider>
+    </div>
+
+    <a (click)="navigateToEmploymentAdd()" class="btn btn-success btn-sm">Add Employment History</a>
+    <br><br>
+
+    <p *ngIf="Employments.length <= 0" class="no-data">
+        There is no entry added yet!
+    </p>
+
+    <div class="table-responsive" *ngIf="Employments.length > 0">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Job Title</th>
+              <th scope="col">Employer Name</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Responibilties/th>
+              <th class="text-center" scope="col">Edit/Delete</th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            <tr *ngFor="let employment of Employments; let i = index">
+              <td>{{employment.jobTitle}}</td>
+              <td>{{employment.employer}}</td>
+              <td>{{employment.employStart}}</td>
+              <td>{{employment.employEnd}}</td>
+              <td>{{employment.responsibilities}}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-primary" routerLink="/user/:email/employment-details/{{employment._id}}"><i class="bi bi-pencil-square"></i></button>&nbsp;
+                <button class="btn btn-sm btn-danger" (click)="delete(employment._id, i)"><i class="bi bi-trash3-fill"></i></button>
+            </tr>
+          </tbody>
+     
+        </table>
+    </div>
+</div> 
+
+
+    <!-- Material Table
+    <div class="container" *ngIf="Employments.length > 0">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+            
+            <ng-container matColumnDef="jobTitle">
+              <th mat-header-cell *matHeaderCellDef>Job Title</th>
+              <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="employer">
+              <th mat-header-cell *matHeaderCellDef>Employer Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.employer }}</td>
+            </ng-container>
+                        
+            <ng-container matColumnDef="responsibilities">
+              <th mat-header-cell *matHeaderCellDef>Responibilties</th>
+              <td mat-cell *matCellDef="let element">{{ element.responsibilities }}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  class="push-right"
+                  [routerLink]="['/employment-details/', element._id]">Edit</button>
+                
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="delete(i, element)">Delete</button>
+              </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+          ></mat-paginator>
+
+        </div>
+    </div> 
+-->
+
+
+    <!--  Old Table
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Mailing Address</th>
+            <th scope="col">Professional Statement</th>
+            <th class="text-center" scope="col">Edit/Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let personal of Employments; let i = index">
+            <td>{{personal.firstName}}</td>
+            <td>{{personal.lastName}}</td>
+            <td>{{personal.phone}}</td>
+            <td>{{personal.emailAddress}}</td>
+            <td>{{personal.mailAddress}}</td>
+            <td>{{personal.statement}}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/user/:email/personal-details/{{personal._id}}"><i class="bi bi-pencil-square"></i></button>&nbsp;
+              <button class="btn btn-sm btn-danger" (click)="delete(personal._id, i)"><i class="bi bi-trash3-fill"></i></button>
+          </tr>
+        </tbody>
+   
+      </table>
+    </div>
+-->
+
+  
+  <!-- Dates
+            <ng-container matColumnDef="employStart">
+              <th mat-header-cell *matHeaderCellDef>Start Date</th>
+              <td mat-cell *matCellDef="let element">{{ element.employStart }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="employEnd">
+                <th mat-header-cell *matHeaderCellDef>End Date</th>
+                <td mat-cell *matCellDef="let element">{{ element.employEnd }}</td>
+              </ng-container>
+            -->

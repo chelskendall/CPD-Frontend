@@ -32,11 +32,16 @@ export class PersonalListComponent implements OnInit {
   }
 
   delete(id: any, i: any) {
-    if (window.confirm('Do you want to go ahead?')) {
+    if (window.confirm('Are you sure?')) {
       this.PersonalService.deletePersonal(id).subscribe((data: any) => {
         this.Personals.splice(i, 1);
       });
     }
+  }
+
+  navigateToPersonalAdd() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/user', email, 'personal-add']);
   }
 
   navigateToPersonal() {
@@ -44,9 +49,34 @@ export class PersonalListComponent implements OnInit {
     this.router.navigate(['/personal', email]);
   }
 
-  navigateToPersonalAdd() {
+  navigateToEmployment() {
     const email = localStorage.getItem('theUser');
-    this.router.navigate(['/user', email, 'personal-add']);
+    this.router.navigate(['/employment', email]);
+  }
+
+  navigateToAcademic() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/academic', email]);
+  }
+
+  navigateToAffiliation() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/affiliation', email]);
+  }
+
+  navigateToService() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/service', email]);
+  }
+
+  navigateToCPD() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/cpd', email]);
+  }
+  
+  navigateToEndorsement() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/endorsement', email]);
   }
 
   logout(){

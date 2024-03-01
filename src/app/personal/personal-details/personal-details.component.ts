@@ -9,22 +9,9 @@ import { FormGroup, FormBuilder } from "@angular/forms";
   selector: 'app-personal-details',
   templateUrl: './personal-details.component.html',
   styleUrls: ['./personal-details.component.css']
-})
+}) 
 
 export class PersonalDetailsComponent implements OnInit {
-
-  /*@Input() viewMode = false;
-
-  @Input() currentPersonal: Personal = {
-    firstName: '',
-    lastName: '',
-    phone: undefined,
-    emailAddress: '',
-    mailAddress: '',
-    statement: ''
-  };
-  
-  message = '';*/
 
   getId: any;
   updateForm: FormGroup;
@@ -58,70 +45,6 @@ export class PersonalDetailsComponent implements OnInit {
       })
     }
 
-/*  ngOnInit(): void {
-    if (!this.viewMode) {
-      this.message = '';
-      this.getPersonal(this.route.snapshot.params["id"]);
-    }
-  }
-
-  getPersonal(id: string): void {
-    this.PersonalService.get(id)
-      .subscribe({
-        next: (data) => {
-          this.currentPersonal = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
-  updatePublished(status: boolean): void {
-    const data = {
-      firstName: this.currentPersonal.firstName,
-      lastName: this.currentPersonal.lastName,
-      phone: this.currentPersonal.phone,
-      emailAddress: this.currentPersonal.emailAddress,
-      mailAddress: this.currentPersonal.mailAddress,
-      statement: this.currentPersonal.statement
-    };
-
-    this.message = '';
-
-    this.PersonalService.update(this.currentPersonal.firstName, data)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message = res.message ? res.message : 'The section was updated successfully!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
-  updatePersonal(): void {
-    this.message = '';
-
-    this.PersonalService.update(this.currentPersonal.firstName, this.currentPersonal)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message = res.message ? res.message : 'This section was updated successfully!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
- 
-  deletePersonal(): void {
-    this.PersonalService.delete(this.currentPersonal.firstName)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.router.navigate(['/personals']);
-        },
-        error: (e) => console.error(e)
-      });
-  }*/
-
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
     document.getElementById("email-value").innerHTML = email;*/
@@ -144,6 +67,36 @@ export class PersonalDetailsComponent implements OnInit {
   navigateToPersonal() {
     const email = localStorage.getItem('theUser');
     this.router.navigate(['/personal', email]);
+  }
+
+  navigateToEmployment() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/employment', email]);
+  }
+
+  navigateToAcademic() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/academic', email]);
+  }
+
+  navigateToAffiliation() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/affiliation', email]);
+  }
+
+  navigateToService() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/service', email]);
+  }
+
+  navigateToCPD() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/cpd', email]);
+  }
+  
+  navigateToEndorsement() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/endorsement', email]);
   }
 
   logout(){

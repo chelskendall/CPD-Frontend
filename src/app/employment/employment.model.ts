@@ -4,5 +4,4 @@ export class Employment {
   employStart?: Date;
   employEnd?: Date;
   responsibilities?: string;
-  files?: string;
 }

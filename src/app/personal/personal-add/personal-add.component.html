@@ -30,9 +30,12 @@
 <div class="container">
 <div class="row justify-content-center mt-5">
 <div class="col-md-4">
-    <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="personalForm" (ngSubmit)="onSubmit()"
+          #resetEmploymentForm="ngForm">
   
     <p-card header="Personal Details" [style]="{ width: '700px' }">
+      <mat-divider fxFlex="1 0"></mat-divider><br><br>
+
       <div class="form-group">
         <label>First Name</label>
         <input

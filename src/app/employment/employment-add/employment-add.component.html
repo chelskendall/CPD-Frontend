@@ -31,7 +31,7 @@
   <div class="row justify-content-center mt-5">
   <div class="inner-wrapper col-md-4">
       <form [formGroup]="employmentForm" (ngSubmit)="onSubmit()"
-            #resetStudentForm="ngForm" novalidate>
+            #resetEmploymentForm="ngForm" novalidate>
     
       <p-card header="Employment History" [style]="{ width: '700px' }">
         <mat-divider fxFlex="1 0"></mat-divider><br><br>
@@ -66,15 +66,15 @@
             <input
               matInput
               readonly
-              [matDatepicker]="picker"
+              [matDatepicker]="picker1"
               placeholder="Start Date"
               formControlName="employStart"
             />
             <mat-datepicker-toggle
               matSuffix
-              [for]="picker"
+              [for]="picker1"
             ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker #picker1></mat-datepicker>
             <mat-error *ngIf="handleError('employStart', 'required')">
               Start date is required
             </mat-error>
@@ -90,15 +90,15 @@
             <input
               matInput
               readonly
-              [matDatepicker]="picker"
+              [matDatepicker]="picker2"
               placeholder="End Date"
               formControlName="employEnd"
             />
             <mat-datepicker-toggle
               matSuffix
-              [for]="picker"
+              [for]="picker2"
             ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker #picker2></mat-datepicker>
             <mat-error *ngIf="handleError('employEnd', 'required')">
               End date is required
             </mat-error>

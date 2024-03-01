@@ -12,16 +12,6 @@ import { PersonalService } from 'src/app/personal/personal.service';
 
 export class PersonalAddComponent implements OnInit {
 
-  /*personal: Personal = {
-    firstName: '',
-    lastName: '',
-    phone: undefined,
-    emailAddress: '',
-    mailAddress: '',
-    statement: ''
-  };
-  submitted = false;*/
-
   personalForm: FormGroup;
   email: string | null | undefined;
 
