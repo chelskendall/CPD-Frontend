@@ -1,57 +1,34 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Employment } from 'src/app/employment/employment.model';
 import { EmploymentService } from 'src/app/employment/employment.service';
 
-import {ViewEncapsulation} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
-import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
-import * as _moment from 'moment';
-import {default as _rollupMoment, Moment} from 'moment';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
-const moment = _rollupMoment || _moment;
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
+export interface Subject {
+  name: string;
+}
 
 @Component({
   selector: 'app-employment-add',
   templateUrl: './employment-add.component.html',
-  styleUrls: ['./employment-add.component.css']
+  styleUrls: ['./employment-add.component.css'],
 })
 
 export class EmploymentAddComponent implements OnInit {
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  @ViewChild('chipList') chipList: any;
+  @ViewChild('resetEmploymentForm') myNgForm: any;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  subjectArray: Subject[] = [];
+  SectioinArray: any = ['A', 'B', 'C', 'D', 'E'];
+
   employmentForm: FormGroup;
   email: string | null | undefined;
-
-  constructor(private EmploymentService: EmploymentService,
-              public formBuilder: FormBuilder,
-              private router: Router,
-              private ngZone: NgZone) 
-    {
-      this.employmentForm = this.formBuilder.group({
-        jobTitle: [''],
-        employer: [''],
-        employStart: [''],
-        employEnd: [''],
-        responsibilities: [''],
-        files: ['']
-      });
-    }
 
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -62,16 +39,45 @@ export class EmploymentAddComponent implements OnInit {
     }
   }
 
-  onSubmit(): any {
+  constructor(private EmploymentService: EmploymentService,
+              public formBuilder: FormBuilder,
+              private router: Router,
+              private ngZone: NgZone,
+              ) 
+    { this.employmentForm = this.formBuilder.group({
+      jobTitle: ['', [Validators.required]],
+      employer: ['', [Validators.required]],
+      employStart: ['', [Validators.required]],
+      employEnd: ['', [Validators.required]],
+      responsibilities: ['', [Validators.required]],
+      files: ['']
+    }); }
+
+    /* Date */
+ /* formatDate(e: { target: { value: string | number | Date; }; }) {
+    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
+    this.employmentForm.get('employStart').setValue(convertDate, {
+      onlyself: true,
+    });
+  }*/
+
+  /* Get errors */
+  public handleError = (controlName: string, errorName: string) => {
+    return this.employmentForm.controls[controlName].hasError(errorName);
+  };
+
+  /* Submit employment */
+  onSubmit() {
+    if (this.employmentForm.valid) {
     this.EmploymentService.addEmployment(this.employmentForm.value).subscribe(
-      (res: any) => {
+      (res) => {
         console.log('Added successfully!' + res);
         this.ngZone.run(() => this.router.navigateByUrl('/user/:email/employment-list'));
       },
       (err: any) => {
         console.log(err);
-      }
-    );
+      });
+    }
   }
 
   navigateToPersonal() {
@@ -118,3 +124,5 @@ export class EmploymentAddComponent implements OnInit {
 
 
 }
+
+

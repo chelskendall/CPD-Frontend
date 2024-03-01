@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,13 +9,11 @@ import { MessageService } from 'primeng/api';
 
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+import { AngularMaterialModule } from './material.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -56,6 +54,8 @@ ng g class models/tutorial --type=model*/
     EmploymentListComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -66,7 +66,7 @@ ng g class models/tutorial --type=model*/
     ReactiveFormsModule,
     ButtonModule,
     ToastModule,
-    MatExpansionModule,
+    AngularMaterialModule,
     RouterModule.forRoot([
       {path:'', component: HomeComponent},
       {path: 'login', component: LoginComponent},
@@ -84,7 +84,8 @@ ng g class models/tutorial --type=model*/
       {path: 'user/:email/employment-list', component: EmploymentListComponent},
     ])
   ],
-  providers: [MessageService],
-  bootstrap: [AppComponent]
+  providers: [MessageService, ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

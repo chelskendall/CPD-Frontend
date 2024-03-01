@@ -1,8 +1,8 @@
 export class Employment {
   jobTitle?: string;
   employer?: string;
-  employStart?: number;
-  employEnd?: string;
+  employStart?: Date;
+  employEnd?: Date;
   responsibilities?: string;
   files?: string;
 }
