@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
 
 
 @NgModule({
@@ -61,7 +63,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatPaginatorModule,
     MatExpansionModule,
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,  MomentDateAdapter, ],
 })
 
 export class AngularMaterialModule {}

@@ -1,34 +1,49 @@
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Employment } from 'src/app/employment/employment.model';
 import { EmploymentService } from 'src/app/employment/employment.service';
 
-export interface Subject {
-  name: string;
-}
+/* Verbose datepicker
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+
+import * as _moment from 'moment';
+import {default as _rollupMoment} from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+*/
+
 
 @Component({
   selector: 'app-employment-add',
   templateUrl: './employment-add.component.html',
   styleUrls: ['./employment-add.component.css'],
+  providers: [     
+    //{ provide: MomentDateAdapter, useValue: MY_FORMATS }
+  ],
 })
+
 
 export class EmploymentAddComponent implements OnInit {
 
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  @ViewChild('chipList') chipList: any;
   @ViewChild('resetEmploymentForm') myNgForm: any;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  subjectArray: Subject[] = [];
-  SectioinArray: any = ['A', 'B', 'C', 'D', 'E'];
 
   employmentForm: FormGroup;
   email: string | null | undefined;
+  //employStart = new FormControl(moment());
 
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -50,16 +65,21 @@ export class EmploymentAddComponent implements OnInit {
       employStart: ['', [Validators.required]],
       employEnd: ['', [Validators.required]],
       responsibilities: ['', [Validators.required]],
-      files: ['']
-    }); }
+      files: [''],
+    }); 
+  }
 
-    /* Date */
- /* formatDate(e: { target: { value: string | number | Date; }; }) {
+  /*Date
+  formatDate(e: { target: { value: string | number | Date; }; }) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
     this.employmentForm.get('employStart').setValue(convertDate, {
       onlyself: true,
     });
-  }*/
+  }
+  dateRange = new FormGroup({
+    employStart: new FormControl(),
+    employEnd: new FormControl()
+  });*/
 
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {

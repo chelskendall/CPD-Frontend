@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DatePipe } from "@angular/common";
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,11 +31,18 @@ import { EmploymentAddComponent } from './employment/employment-add/employment-a
 import { EmploymentDetailsComponent } from './employment/employment-details/employment-details.component';
 import { EmploymentListComponent } from './employment/employment-list/employment-list.component';
 
-/*ng g s services/tutorial
-ng g c components/add-tutorial
-ng g c components/tutorial-details
-ng g c components/tutorials-list
-ng g class models/tutorial --type=model*/
+import { AcademicMainComponent } from './academic/academic-main/academic-main.component';
+import { AcademicAddComponent } from './academic/academic-add/academic-add.component';
+import { AcademicDetailsComponent } from './academic/academic-details/academic-details.component';
+import { AcademicListComponent } from './academic/academic-list/academic-list.component';
+
+/*
+ng g s academic/academic
+ng g component academic/academic-add --module app
+ng g component academic/academic-details --module app
+ng g component academic/academic-list --module app
+ng g component academic/academic-main --module app
+ng g class academic/academic --type=model*/
 
 
 @NgModule({
@@ -52,6 +60,10 @@ ng g class models/tutorial --type=model*/
     EmploymentAddComponent,
     EmploymentDetailsComponent,
     EmploymentListComponent,
+    AcademicMainComponent,
+    AcademicAddComponent,
+    AcademicDetailsComponent,
+    AcademicListComponent,
   ],
   imports: [
     FormsModule,
@@ -82,9 +94,14 @@ ng g class models/tutorial --type=model*/
       {path: 'user/:email/employment-add', component: EmploymentAddComponent},
       {path: 'user/:email/employment-details/:id', component: EmploymentDetailsComponent},
       {path: 'user/:email/employment-list', component: EmploymentListComponent},
+
+      {path: 'academic/:email', component: AcademicMainComponent},
+      {path: 'user/:email/academic-add', component: AcademicAddComponent},
+      {path: 'user/:email/academic-details/:id', component: AcademicDetailsComponent},
+      {path: 'user/:email/academic-list', component: AcademicListComponent},
     ])
   ],
-  providers: [MessageService, ],
+  providers: [MessageService, DatePipe ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

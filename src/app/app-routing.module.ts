@@ -16,6 +16,11 @@ import { EmploymentAddComponent } from './employment/employment-add/employment-a
 import { EmploymentDetailsComponent } from './employment/employment-details/employment-details.component';
 import { EmploymentListComponent } from './employment/employment-list/employment-list.component';
 
+import { AcademicMainComponent } from './academic/academic-main/academic-main.component';
+import { AcademicAddComponent } from './academic/academic-add/academic-add.component';
+import { AcademicDetailsComponent } from './academic/academic-details/academic-details.component';
+import { AcademicListComponent } from './academic/academic-list/academic-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,6 +39,11 @@ const routes: Routes = [
   {path: 'user/:email/employment-add', component: EmploymentAddComponent},
   {path: 'user/:email/employment-details/:id', component: EmploymentDetailsComponent},
   {path: 'user/:email/employment-list', component: EmploymentListComponent},
+
+  {path: 'academic/:email', component: AcademicMainComponent},
+  {path: 'user/:email/academic-add', component: AcademicAddComponent},
+  {path: 'user/:email/academic-details/:id', component: AcademicDetailsComponent},
+  {path: 'user/:email/academic-list', component: AcademicListComponent},
 ];
 
 @NgModule({

@@ -2,8 +2,6 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employment } from 'src/app/employment/employment.model';
 import { EmploymentService } from 'src/app/employment/employment.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
  
 @Component({
@@ -23,11 +21,6 @@ export class EmploymentListComponent implements OnInit {
       this.EmploymentService.getEmploymentList().subscribe((data: any) => {
       this.Employments = data.data;
       console.log(data);
-
-      /*this.dataSource = new MatTableDataSource<Employment>(this.Employments);
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-      }, 0);*/
     });
    }
 
