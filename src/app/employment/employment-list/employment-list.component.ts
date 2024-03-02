@@ -5,7 +5,7 @@ import { EmploymentService } from 'src/app/employment/employment.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-
+ 
 @Component({
   selector: 'app-employment-list',
   templateUrl: './employment-list.component.html',
@@ -17,22 +17,11 @@ export class EmploymentListComponent implements OnInit {
   Employments: any = [];
   email: string | null | undefined;
 
-  dataSource!: MatTableDataSource<Employment>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  displayedColumns: string[] = [
-    'jobTitle',
-    'employer',
-    'employStart',
-    'employEnd',
-    'responsibilities',
-  ];
-
   constructor(
     private EmploymentService: EmploymentService,
     private router: Router) {
-      this.EmploymentService.getEmploymentList().subscribe((data) => {
-      this.Employments = data;
+      this.EmploymentService.getEmploymentList().subscribe((data: any) => {
+      this.Employments = data.data;
       console.log(data);
 
       /*this.dataSource = new MatTableDataSource<Employment>(this.Employments);
