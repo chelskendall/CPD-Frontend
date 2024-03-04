@@ -1,1 +1,48 @@
-<p>academic-list works!</p>
+<!-- Top navigation -->
+<div>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container mt-3"> </div>
+  </div>
+  
+  <!-- Side navigation -->
+  <div class="sidenav">
+    <a (click)="navigateToPersonal()">Personal Details</a><br>
+    <a (click)="navigateToEmployment()">Employment History</a><br>
+    <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+    <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+    <a (click)="navigateToService()">Professional Services</a><br>
+    <a (click)="navigateToCPD()">CPD Training</a><br>
+    <a (click)="navigateToEndorsement()">Endorsements</a><br>
+  </div>
+      
+  <!-- Main Content -->
+
+<div class="container academics-table">
+    <!-- No data message -->
+    <div class="alert alert-success text-center" role="alert" *ngIf="Academic.length <= 0">
+        No Academic Qualifications added yet!
+    </div>
+    <ul class="list-unstyled">
+        <li class="media" *ngFor="let academics of Academic; let i = index">
+            <img [src]="academics.files" class="mr-3" [alt]="academics.establishment">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{academics.establishment}}</h5>
+                <h5 class="mt-0 mb-1">{{academics.courseTitle}}</h5>
+                <h5 class="mt-0 mb-1">{{academics.academicStart}}</h5>
+                <h5 class="mt-0 mb-1">{{academics.academicEnd}}</h5>
+                {{academics._id}}
+            </div>
+        </li>
+    </ul>
+</div>

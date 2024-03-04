@@ -36,13 +36,19 @@ import { AcademicAddComponent } from './academic/academic-add/academic-add.compo
 import { AcademicDetailsComponent } from './academic/academic-details/academic-details.component';
 import { AcademicListComponent } from './academic/academic-list/academic-list.component';
 
+import { AffiliationMainComponent } from './affiliation/affiliation-main/affiliation-main.component';
+import { AffiliationAddComponent } from './affiliation/affiliation-add/affiliation-add.component';
+import { AffiliationDetailsComponent } from './affiliation/affiliation-details/affiliation-details.component';
+import { AffiliationListComponent } from './affiliation/affiliation-list/affiliation-list.component';
+
+
 /*
-ng g s academic/academic
-ng g component academic/academic-add --module app
-ng g component academic/academic-details --module app
-ng g component academic/academic-list --module app
-ng g component academic/academic-main --module app
-ng g class academic/academic --type=model*/
+ng g s affiliation/affiliation
+ng g component affiliation/affiliation-add --module app
+ng g component affiliation/affiliation-details --module app
+ng g component affiliation/affiliation-list --module app
+ng g component affiliation/affiliation-main --module app
+ng g class affiliation/affiliation --type=model*/
 
 
 @NgModule({
@@ -64,6 +70,10 @@ ng g class academic/academic --type=model*/
     AcademicAddComponent,
     AcademicDetailsComponent,
     AcademicListComponent,
+    AffiliationMainComponent,
+    AffiliationAddComponent,
+    AffiliationDetailsComponent,
+    AffiliationListComponent,
   ],
   imports: [
     FormsModule,
@@ -99,6 +109,12 @@ ng g class academic/academic --type=model*/
       {path: 'user/:email/academic-add', component: AcademicAddComponent},
       {path: 'user/:email/academic-details/:id', component: AcademicDetailsComponent},
       {path: 'user/:email/academic-list', component: AcademicListComponent},
+
+      {path: 'affiliation/:email', component: AffiliationMainComponent},
+      {path: 'user/:email/affiliation-add', component: AffiliationAddComponent},
+      {path: 'user/:email/affiliation-details/:id', component: AffiliationDetailsComponent},
+      {path: 'user/:email/affiliation-list', component: AffiliationListComponent},
+
     ])
   ],
   providers: [MessageService, DatePipe ],

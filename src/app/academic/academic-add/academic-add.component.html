@@ -1,1 +1,87 @@
-<p>academic-add works!</p>
+<!-- Top navigation -->
+<div>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container mt-3"> </div>
+  </div>
+  
+  <!-- Side navigation -->
+  <div class="sidenav">
+    <a (click)="navigateToPersonal()">Personal Details</a><br>
+    <a (click)="navigateToEmployment()">Employment History</a><br>
+    <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+    <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+    <a (click)="navigateToService()">Professional Services</a><br>
+    <a (click)="navigateToCPD()">CPD Training</a><br>
+    <a (click)="navigateToEndorsement()">Endorsements</a><br>
+  </div>
+      
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="inner-wrapper col-md-4">  
+
+    <form [formGroup]="academicForm" (ngSubmit)="ngOnInit()">
+
+    <p-card header="Employment History" [style]="{ width: '700px' }">
+    <mat-divider fxFlex="1 0"></mat-divider><br><br>
+    
+    <!-- Progress Bar -->
+    <div class="progress form-group" *ngIf="percentDone">
+      <div
+        class="progress-bar progress-bar-striped bg-success"
+        role="progressbar"
+        [style.width.%]="percentDone"
+      ></div>
+    </div>
+    
+    <!-- Image Preview -->
+    <div class="form-group">
+      <div class="preview" *ngIf="preview && preview !== null">
+        <img [src]="preview" [alt]="academicForm.value.name" />
+      </div>
+    </div>
+    
+    <!-- File Input -->
+    <div class="form-group">
+      <input type="file" (change)="uploadFile($event)" />
+    </div>
+    
+    <!-- Main -->
+    <div class="form-group input-group-lg">
+      <input class="form-control" placeholder="Establishment" formControlName="establishment" />
+    </div>
+
+    <div class="form-group input-group-lg">
+        <input class="form-control" placeholder="Course Title" formControlName="courseTitle" />
+      </div>
+
+    <div class="form-group input-group-lg">
+        <input class="form-control" placeholder="Start Date" formControlName="academicStart" />
+      </div>
+      
+    <div class="form-group input-group-lg">
+        <input class="form-control" placeholder="End Date" formControlName="academicEnd" />
+      </div>  
+    
+    <!-- Submit -->
+    <div class="form-group">
+      <button class="btn btn-danger btn-block btn-lg">Create User</button>
+    </div>
+</p-card>
+
+  </form>
+
+</div>
+</div>
+</div>

@@ -21,6 +21,12 @@ import { AcademicAddComponent } from './academic/academic-add/academic-add.compo
 import { AcademicDetailsComponent } from './academic/academic-details/academic-details.component';
 import { AcademicListComponent } from './academic/academic-list/academic-list.component';
 
+import { AffiliationMainComponent } from './affiliation/affiliation-main/affiliation-main.component';
+import { AffiliationAddComponent } from './affiliation/affiliation-add/affiliation-add.component';
+import { AffiliationDetailsComponent } from './affiliation/affiliation-details/affiliation-details.component';
+import { AffiliationListComponent } from './affiliation/affiliation-list/affiliation-list.component';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +50,12 @@ const routes: Routes = [
   {path: 'user/:email/academic-add', component: AcademicAddComponent},
   {path: 'user/:email/academic-details/:id', component: AcademicDetailsComponent},
   {path: 'user/:email/academic-list', component: AcademicListComponent},
+
+  {path: 'affiliation/:email', component: AffiliationMainComponent},
+  {path: 'user/:email/affiliation-add', component: AffiliationAddComponent},
+  {path: 'user/:email/affiliation-details/:id', component: AffiliationDetailsComponent},
+  {path: 'user/:email/affiliation-list', component: AffiliationListComponent},
+
 ];
 
 @NgModule({
