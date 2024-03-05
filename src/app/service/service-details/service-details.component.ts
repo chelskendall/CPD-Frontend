@@ -1,28 +1,60 @@
-import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AcademicService } from "src/app/academic/academic.service";
-import { Router } from '@angular/router';
+import { Service } from 'src/app/service/service.model';
+import { ServiceService } from 'src/app/service/service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-academic-add',
-  templateUrl: './academic-add.component.html',
-  styleUrls: ['./academic-add.component.css']
+  selector: 'app-service-details',
+  templateUrl: './service-details.component.html',
+  styleUrls: ['./service-details.component.css']
 })
 
-export class AcademicAddComponent implements OnInit {
+export class ServiceDetailsComponent implements OnInit {
+
+  getId: any;
+  updateForm: FormGroup;
+  email: string | null | undefined;
+
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  typeArray: any = ['Lecture', 'Article/Book/Report', 'Project', 'Community Activity', 'Other'];
   
   fileArr = [];
   imgArr = [];
   fileObj = [];
   msg: string;
   progress: number = 0;
-  @ViewChild('resetAcademicForm') myNgForm: any;
 
-  academicForm: FormGroup;
-  email: string | null | undefined;
+  constructor(
+    public ServiceService: ServiceService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    public formBuilder: FormBuilder,
+    private ngZone: NgZone,
+    private sanitizer: DomSanitizer,
+    ) 
+    {
+      this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+      this.ServiceService.getService(this.getId).subscribe((data: any) => {
+      this.updateForm.setValue({
+        typeServices: [data.data.typeServices, [Validators.required]],
+        serviceTitle: data.data.serviceTitle,
+        serviceDescribe: data.data.serviceDescribe,
+        serviceDate: [data.data.serviceDate, [Validators.required]],
+        serviceNotes: data.data.serviceNotes,
+        });
+      });
+      this.updateForm = this.formBuilder.group({
+        typeServices: ['', [Validators.required]],
+        serviceTitle: ['', [Validators.required]],
+        serviceDescribe: ['', [Validators.required]],
+        serviceDate: ['', [Validators.required]],
+        serviceNotes: ['', [Validators.required]],
+      })
+    }
 
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -33,25 +65,9 @@ export class AcademicAddComponent implements OnInit {
     }
   }
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
-    private sanitizer: DomSanitizer,
-    public AcademicService: AcademicService
-  ) {
-    this.academicForm = this.formBuilder.group({
-      establishment: ['', [Validators.required]],
-      courseTitle: ['', [Validators.required]],
-      academicStart: ['', [Validators.required]],
-      academicEnd: ['', [Validators.required]],
-      files: [null],
-    });
-  } 
-
-   /* Get errors */
-   public handleError = (controlName: string, errorName: string) => {
-    return this.academicForm.controls[controlName].hasError(errorName);
+  /* Get errors */
+  public handleError = (controlName: string, errorName: string) => {
+    return this.updateForm.controls[controlName].hasError(errorName);
   };
 
   upload(e) {
@@ -68,15 +84,15 @@ export class AcademicAddComponent implements OnInit {
     });
 
     // Set files form control
-    this.academicForm.patchValue({
+    this.updateForm.patchValue({
       files: this.fileObj,
     });
 
-    this.academicForm.get('files').updateValueAndValidity();
+    this.updateForm.get('files').updateValueAndValidity();
 
     // Upload to server
-    this.AcademicService
-      .addFiles(this.academicForm.value.files)
+    this.ServiceService
+      .addFiles(this.updateForm.value.files)
       .subscribe((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.Sent:
@@ -106,23 +122,15 @@ export class AcademicAddComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  /* Submit academic */
-  onSubmit() {
-    if (this.academicForm.valid) {
-    this.AcademicService.addAcademic(
-      this.academicForm.value.establishment,
-      this.academicForm.value.courseTitle,
-      this.academicForm.value.academicStart,
-      this.academicForm.value.academicEnd,)
-      .subscribe((res) => {
-        console.log('Added successfully!' + res);
-        this.ngZone.run(() => this.router.navigateByUrl('/user/:email/academic-list'));
-      },
-      (err: any) => {
+  onUpdate(): any {
+    this.ServiceService.updateService(this.getId, this.updateForm.value)
+    .subscribe(() => {
+        console.log('Data updated successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/user/:email/service-list'))
+      }, (err) => {
         console.log(err);
-      });
-    }
-}
+    });
+  }
 
   navigateToPersonal() {
     const email = localStorage.getItem('theUser');

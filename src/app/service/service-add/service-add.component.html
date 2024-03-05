@@ -1,0 +1,180 @@
+<!-- Top navigation -->
+<div>
+    <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container mt-3"> </div>
+  </div>
+  
+<!-- Side navigation -->
+  <div class="sidenav">
+    <a (click)="navigateToPersonal()">Personal Details</a><br>
+    <a (click)="navigateToEmployment()">Employment History</a><br>
+    <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+    <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+    <a (click)="navigateToService()">Professional Services</a><br>
+    <a (click)="navigateToCPD()">CPD Training</a><br>
+    <a (click)="navigateToEndorsement()">Endorsements</a><br>
+  </div>
+      
+<!-- Main Content -->
+  <div class="container">
+  <div class="row justify-content-center mt-5">
+  <div class="inner-wrapper col-md-4">
+      <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()"
+            #resetServiceForm="ngForm" >
+    
+      <p-card header="Professional Services" [style]="{ width: '700px' }">
+        <mat-divider fxFlex="1 0"></mat-divider><br><br>
+
+        <div class="form-group">
+          <label>Title</label>
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="serviceTitle"
+            required
+          />
+        </div><br>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea
+              class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              type="text"
+              rows="4"
+              formControlName="serviceDescribe"
+              placeholder="Summary of work, reason behind activity."
+              required>
+            </textarea>
+          </div><br>
+
+<!-- Drop down selection -->
+  <mat-form-field>
+    <mat-label>Service Type</mat-label>
+    <mat-select formControlName="typeServices">
+      <mat-option
+        [value]="typeArray"
+        *ngFor="let typeArray of typeArray"
+        >{{ typeArray }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="handleError('typeServices', 'required')">
+      Selection is required
+    </mat-error>
+  </mat-form-field>
+  <br><br>
+
+<!-- Dates -->
+
+<mat-card>
+    <div class="controlers-wrapper">
+
+       <mat-form-field>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+            <input
+              matInput
+              readonly
+              [matDatepicker]="picker1"
+              placeholder="Date"
+              formControlName="serviceDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="handleError('serviceDate', 'required')">
+              Date is required
+            </mat-error>
+          </mat-form-field><br><br>
+
+    </div>
+</mat-card>
+<br><br>
+
+<!--Resume main content-->
+<div class="form-group">
+    <label>Notes</label>
+    <textarea
+      class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      type="text"
+      rows="4"
+      formControlName="serviceNotes"
+      placeholder="Key things you learned and how you can put them into practice."
+      required>
+    </textarea>
+  </div>
+     
+        <!--under input: (dateChange)="formatDate($event)" -->
+  
+<!--File Upload Field-->
+<br><br>
+  <form [formGroup]="serviceForm">
+    <div class="row">
+
+      <!-- Progress Bar -->
+      <div class="col-md-12" *ngIf="progress">
+        <div class="progress form-group">
+          <div
+            class="progress-bar progress-bar-striped bg-success"
+            role="progressbar"
+            [style.width.%]="progress"
+          ></div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div
+          class="fileupload"
+          appDragDropFileUpload
+          (click)="fileField.click()"
+          (fileDropped)="upload($event)"
+        >
+          <span class="ddinfo">Choose a file or drag here</span>
+          <input
+            type="file"
+            name="files"
+            #fileField
+            (change)="upload($any($event).target.files)"
+            hidden
+            multiple
+          />
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="image-list" *ngFor="let file of fileArr; let i = index">
+          <div class="profile">
+            <img [src]="sanitize(file['url'])" alt="" />
+          </div>
+          <p>{{ file.item.name }}</p>
+        </div>
+        <p class="message">{{ msg }}</p>
+      </div>
+
+      </div>
+  </form>
+<br><br>
+
+<!-- Submit Button-->      
+        <p-button
+        label="Submit"
+        styleClass="w-full"
+        type="submit">
+      </p-button>
+      
+        </p-card>
+      </form>
+    </div>
+  </div>
+  </div>

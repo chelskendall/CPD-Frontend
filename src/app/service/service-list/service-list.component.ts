@@ -1,24 +1,24 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Affiliation } from 'src/app/affiliation/affiliation.model';
-import { AffiliationService } from 'src/app/affiliation/affiliation.service';
+import { Service } from 'src/app/service/service.model';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-affiliation-list',
-  templateUrl: './affiliation-list.component.html',
-  styleUrls: ['./affiliation-list.component.css']
+  selector: 'app-service-list',
+  templateUrl: './service-list.component.html',
+  styleUrls: ['./service-list.component.css']
 })
 
-export class AffiliationListComponent implements OnInit {
+export class ServiceListComponent implements OnInit {
 
-  Affiliations: any = [];
+  Services: any = [];
   email: string | null | undefined;
 
   constructor(
-    private AffiliationService: AffiliationService,
+    private ServiceService: ServiceService,
     private router: Router) {
-      this.AffiliationService.getAffiliationList().subscribe((data: any) => {
-      this.Affiliations = data.data;
+      this.ServiceService.getServiceList().subscribe((data: any) => {
+      this.Services = data.data;
       console.log(data);
     });
    }
@@ -34,15 +34,15 @@ export class AffiliationListComponent implements OnInit {
 
   delete(id: any, i: any) {
     if (window.confirm('Are you sure?')) {
-      this.AffiliationService.deleteAffiliation(id).subscribe((data: any) => {
-        this.Affiliations.splice(i, 1);
+      this.ServiceService.deleteService(id).subscribe((data: any) => {
+        this.Services.splice(i, 1);
       });
     }
   }
 
-  navigateToAffiliationAdd() {
+  navigateToServiceAdd() {
     const email = localStorage.getItem('theUser');
-    this.router.navigate(['/user', email, 'affiliation-add']);
+    this.router.navigate(['/user', email, 'service-add']);
   }
 
   navigateToPersonal() {

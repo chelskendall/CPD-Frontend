@@ -44,6 +44,14 @@
     border-top: 1px solid rgb(7, 7, 7);
     opacity: 0.25;
   }
+
+  .example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+  }
+  
+  .example-month-picker .mat-calendar-arrow {
+    display: none;
+  }
   
   /* Style page content */
   .container {
@@ -54,7 +62,7 @@
     height: 20px;
     }
 
-/* Drag and drop file upload */
+  /* Drag and drop file upload */
   * {
     box-sizing: border-box;
 }

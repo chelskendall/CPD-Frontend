@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Academic } from './academic.model';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Service } from '../service/service.model';
 import  axios  from 'axios';
-
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AcademicService {
+export class ServiceService {
 
   baseUrl = 'http://localhost:3000/user/:email';
   private token: string | null;
@@ -33,7 +32,7 @@ export class AcademicService {
 
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.post(`${this.baseUrl}/newacademic`, formData, {
+    return this.http.post(`${this.baseUrl}/newservice`, formData, {
       headers,
       reportProgress: true,
       observe: 'events'
@@ -41,40 +40,41 @@ export class AcademicService {
       catchError(this.handleError)
     )
   }
-
-   // Create new Academic
-  addAcademic(
-    establishment: string,
-    courseTitle: string,
-    academicStart: Date,
-    academicEnd: Date,): 
+   
+  //Create new Service
+  addService(typeServices: string,
+    serviceTitle: string,
+    serviceDescribe: string,
+    serviceDate: Date, 
+    serviceNotes: string,): 
     
     Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    
+
     var formData: any = new FormData();
-    formData.append('establishment', establishment);
-    formData.append('courseTitle', courseTitle);
-    formData.append('academicStart', academicStart);
-    formData.append('academicEnd', academicEnd);
-    
-    return this.http.post(`${this.baseUrl}/newacademic`, formData, { headers })
+    formData.append('typeServices', typeServices);
+    formData.append('serviceTitle', serviceTitle);
+    formData.append('serviceDescribe', serviceDescribe);
+    formData.append('serviceDate', serviceDate);
+    formData.append('serviceNotes', serviceNotes);
+
+    return this.http.post(`${this.baseUrl}/newservice`, formData, { headers })
     .pipe(catchError(this.handleError));
   }
 
-  //get all Academic - list
-  getAcademicList() {
+  //get all Service - list
+  getServiceList() {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get(`${this.baseUrl}/allacademic`, { headers });
+    return this.http.get(`${this.baseUrl}/allservice`, { headers });
   }
 
-  //get one Academic
-  getAcademic(id: any): Observable<Academic> {
+  //get one Service
+  getService(id: any): Observable<Service> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get<Academic>(`${this.baseUrl}/academic/${id}`, { headers })
+    return this.http.get<Service>(`${this.baseUrl}/service/${id}`, { headers })
     .pipe(
       map((res: any) => {
         return res || {};
@@ -83,20 +83,26 @@ export class AcademicService {
     );
   }
 
-  //update Academic
-  updateAcademic(id: any, data: any): Observable<any> {
+  //update Service
+  updateService(id: any, data: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.put(`${this.baseUrl}/updateacademic/${id}`, data, { headers })
+    return this.http.put(`${this.baseUrl}/updateservice/${id}`, data, { headers })
     .pipe(catchError(this.handleError));
   }
 
-  //delete academic
-  deleteAcademic(id: any): Observable<any> {
+  //delete Service
+  deleteService(id: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.delete(`${this.baseUrl}/deleteacademic/${id}`, { headers })
+    return this.http.delete(`${this.baseUrl}/deleteservice/${id}`, { headers })
     .pipe(catchError(this.handleError));
+  }
+
+  deleteAll(): Observable<any> {
+    const email = localStorage.getItem('theUser');
+    const headers = {'Authorization': `Bearer ${this.token}`};
+    return this.http.delete(this.baseUrl);
   }
 
   // Error

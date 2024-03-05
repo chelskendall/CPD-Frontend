@@ -42,14 +42,19 @@ import { AffiliationAddComponent } from './affiliation/affiliation-add/affiliati
 import { AffiliationDetailsComponent } from './affiliation/affiliation-details/affiliation-details.component';
 import { AffiliationListComponent } from './affiliation/affiliation-list/affiliation-list.component';
 
+import { ServiceMainComponent } from './service/service-main/service-main.component';
+import { ServiceAddComponent } from './service/service-add/service-add.component';
+import { ServiceDetailsComponent } from './service/service-details/service-details.component';
+import { ServiceListComponent } from './service/service-list/service-list.component';
+
 
 /*
-ng g s affiliation/affiliation
-ng g component affiliation/affiliation-add --module app
-ng g component affiliation/affiliation-details --module app
-ng g component affiliation/affiliation-list --module app
-ng g component affiliation/affiliation-main --module app
-ng g class affiliation/affiliation --type=model*/
+ng g s service/service
+ng g component service/service-add --module app
+ng g component service/service-details --module app
+ng g component service/service-list --module app
+ng g component service/service-main --module app
+ng g class service/service --type=model*/
 
 
 @NgModule({
@@ -76,6 +81,10 @@ ng g class affiliation/affiliation --type=model*/
     AffiliationAddComponent,
     AffiliationDetailsComponent,
     AffiliationListComponent,
+    ServiceMainComponent,
+    ServiceAddComponent,
+    ServiceDetailsComponent,
+    ServiceListComponent,
   ],
   imports: [
     FormsModule,
@@ -116,6 +125,11 @@ ng g class affiliation/affiliation --type=model*/
       {path: 'user/:email/affiliation-add', component: AffiliationAddComponent},
       {path: 'user/:email/affiliation-details/:id', component: AffiliationDetailsComponent},
       {path: 'user/:email/affiliation-list', component: AffiliationListComponent},
+
+      {path: 'service/:email', component: ServiceMainComponent},
+      {path: 'user/:email/service-add', component: ServiceAddComponent},
+      {path: 'user/:email/service-details/:id', component: ServiceDetailsComponent},
+      {path: 'user/:email/service-list', component: ServiceListComponent},
 
     ])
   ],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { AcademicService } from "src/app/academic/academic.service";
 import { Router } from '@angular/router';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
@@ -12,19 +12,16 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 export class AcademicListComponent implements OnInit {
 
+Academics: any = [];
 email: string | null | undefined;
 
-
-Academics: any = [];
-  constructor(public AcademicService: AcademicService,
+constructor(public AcademicService: AcademicService,
               public router: Router,) {
-    //this.getAcademic();
-    this.AcademicService.getAcademic().subscribe((academics: any) => {
-      //this.Academics = res['academics'];
-      this.Academics = academics.data;
-      console.log(academics);
-    })
-  }
+    this.AcademicService.getAcademicList().subscribe((data: any) => {
+    this.Academics = data.data;
+    console.log(data);
+  });
+}
  
 ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -34,13 +31,6 @@ ngOnInit(): void {
       alert("Session Expired. Login again")
     }
   }
-
-  /*
-  getAcademic() {
-    this.AcademicService.getAcademic().subscribe((res) => {
-      this.Academics = res['academics'];
-    })
-  }*/
 
   delete(id: any, i: any) {
     if (window.confirm('Are you sure?')) {

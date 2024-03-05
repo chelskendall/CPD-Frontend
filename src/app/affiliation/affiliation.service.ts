@@ -41,7 +41,7 @@ export class AffiliationService {
     )
   }
    
-  //add new Affiliation
+  //Create new Affiliation
   addAffiliation(typeAffiliation: string,
     organization: string,
     affiliateTitle: string,

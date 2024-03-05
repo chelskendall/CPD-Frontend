@@ -14,10 +14,11 @@ import { AffiliationService } from 'src/app/affiliation/affiliation.service';
   styleUrls: ['./affiliation-add.component.css']
 })
 
-export class AffiliationAddComponent {
+export class AffiliationAddComponent implements OnInit {
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   typeArray: any = ['Membership', 'Certificate', 'Award', 'Grant', 'Other'];
+  
   fileArr = [];
   imgArr = [];
   fileObj = [];
