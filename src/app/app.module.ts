@@ -47,14 +47,19 @@ import { ServiceAddComponent } from './service/service-add/service-add.component
 import { ServiceDetailsComponent } from './service/service-details/service-details.component';
 import { ServiceListComponent } from './service/service-list/service-list.component';
 
+import { CpdMainComponent } from './cpd/cpd-main/cpd-main.component';
+import { CpdAddComponent } from './cpd/cpd-add/cpd-add.component';
+import { CpdDetailsComponent } from './cpd/cpd-details/cpd-details.component';
+import { CpdListComponent } from './cpd/cpd-list/cpd-list.component';
+
 
 /*
-ng g s service/service
-ng g component service/service-add --module app
-ng g component service/service-details --module app
-ng g component service/service-list --module app
-ng g component service/service-main --module app
-ng g class service/service --type=model*/
+ng g s cpd/cpd
+ng g component cpd/cpd-add --module app
+ng g component cpd/cpd-details --module app
+ng g component cpd/cpd-list --module app
+ng g component cpd/cpd-main --module app
+ng g class cpd/cpd --type=model*/
 
 
 @NgModule({
@@ -85,6 +90,10 @@ ng g class service/service --type=model*/
     ServiceAddComponent,
     ServiceDetailsComponent,
     ServiceListComponent,
+    CpdMainComponent,
+    CpdAddComponent,
+    CpdDetailsComponent,
+    CpdListComponent,
   ],
   imports: [
     FormsModule,
@@ -130,6 +139,11 @@ ng g class service/service --type=model*/
       {path: 'user/:email/service-add', component: ServiceAddComponent},
       {path: 'user/:email/service-details/:id', component: ServiceDetailsComponent},
       {path: 'user/:email/service-list', component: ServiceListComponent},
+
+      {path: 'cpd/:email', component: CpdMainComponent},
+      {path: 'user/:email/cpd-add', component: CpdAddComponent},
+      {path: 'user/:email/cpd-details/:id', component: CpdDetailsComponent},
+      {path: 'user/:email/cpd-list', component: CpdListComponent},
 
     ])
   ],

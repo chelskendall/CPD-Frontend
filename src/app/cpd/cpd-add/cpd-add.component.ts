@@ -1,29 +1,34 @@
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Academic } from 'src/app/academic/academic.model';
-import { AcademicService } from "src/app/academic/academic.service";
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Cpd } from 'src/app/cpd/cpd.model';
+import { CpdService } from 'src/app/cpd/cpd.service';
+
 
 @Component({
-  selector: 'app-academic-add',
-  templateUrl: './academic-add.component.html',
-  styleUrls: ['./academic-add.component.css']
+  selector: 'app-cpd-add',
+  templateUrl: './cpd-add.component.html',
+  styleUrls: ['./cpd-add.component.css']
 })
 
-export class AcademicAddComponent implements OnInit {
+export class CpdAddComponent implements OnInit {
+
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  typeArray: any = ['On-Job-Training', 'Work experience', 'Self-study', 'Seminars/Lectures', 'Workshops', 'Other'];
   
   fileArr = [];
   imgArr = [];
   fileObj = [];
   msg: string;
   progress: number = 0;
-  @ViewChild('resetAcademicForm') myNgForm: any;
+  @ViewChild('resetCpdForm') myNgForm: any;
 
-  academicForm: FormGroup;
+  cpdForm: FormGroup;
   email: string | null | undefined;
+
 
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -34,25 +39,27 @@ export class AcademicAddComponent implements OnInit {
     }
   }
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
-    private sanitizer: DomSanitizer,
-    public AcademicService: AcademicService
-  ) {
-    this.academicForm = this.formBuilder.group({
-      establishment: ['', [Validators.required]],
-      courseTitle: ['', [Validators.required]],
-      academicStart: ['', [Validators.required]],
-      academicEnd: ['', [Validators.required]],
+  constructor(public CpdService: CpdService,
+              public formBuilder: FormBuilder,
+              private router: Router,
+              private ngZone: NgZone,
+              private sanitizer: DomSanitizer,
+              ) 
+    { this.cpdForm = this.formBuilder.group({
+      typeCPD: ['', [Validators.required]],
+      cpdTitle: ['', [Validators.required]],
+      cpdDescribe: ['', [Validators.required]],
+      cpdStart: ['', [Validators.required]],
+      cpdEnd: ['', [Validators.required]],
+      cpdHours: ['', [Validators.required]],
+      cpdReflect: ['', [Validators.required]],
       files: [null],
-    });
-  } 
+    }); 
+  }
 
-   /* Get errors */
-   public handleError = (controlName: string, errorName: string) => {
-    return this.academicForm.controls[controlName].hasError(errorName);
+  /* Get errors */
+  public handleError = (controlName: string, errorName: string) => {
+    return this.cpdForm.controls[controlName].hasError(errorName);
   };
 
   upload(e) {
@@ -69,15 +76,15 @@ export class AcademicAddComponent implements OnInit {
     });
 
     // Set files form control
-    this.academicForm.patchValue({
+    this.cpdForm.patchValue({
       files: this.fileObj,
     });
 
-    this.academicForm.get('files').updateValueAndValidity();
+    this.cpdForm.get('files').updateValueAndValidity();
 
     // Upload to server
-    this.AcademicService
-      .addFiles(this.academicForm.value.files)
+    this.CpdService
+      .addFiles(this.cpdForm.value.files)
       .subscribe((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.Sent:
@@ -101,29 +108,32 @@ export class AcademicAddComponent implements OnInit {
         }
       });
   }
- 
+
   // Clean Url
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  /* Submit academic */
+  /* Submit affiliation */
   onSubmit() {
-    if (this.academicForm.valid) {
-    this.AcademicService.addAcademic(
-      this.academicForm.value.establishment,
-      this.academicForm.value.courseTitle,
-      this.academicForm.value.academicStart,
-      this.academicForm.value.academicEnd,)
+    if (this.cpdForm.valid) {
+    this.CpdService.addCpd( 
+      this.cpdForm.value.typeCPD, 
+      this.cpdForm.value.cpdTitle,
+      this.cpdForm.value.cpdDescribe,
+      this.cpdForm.value.cpdStart,
+      this.cpdForm.value.cpdEnd,
+      this.cpdForm.value.cpdHours,
+      this.cpdForm.value.cpdReflect,)
       .subscribe((res) => {
         console.log('Added successfully!' + res);
-        this.ngZone.run(() => this.router.navigateByUrl('/user/:email/academic-list'));
+        this.ngZone.run(() => this.router.navigateByUrl('/user/:email/cpd-list'));
       },
       (err: any) => {
         console.log(err);
       });
     }
-}
+  }
 
   navigateToPersonal() {
     const email = localStorage.getItem('theUser');
@@ -166,6 +176,5 @@ export class AcademicAddComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['']);
   }
-
 
 }

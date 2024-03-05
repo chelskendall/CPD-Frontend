@@ -31,6 +31,11 @@ import { ServiceAddComponent } from './service/service-add/service-add.component
 import { ServiceDetailsComponent } from './service/service-details/service-details.component';
 import { ServiceListComponent } from './service/service-list/service-list.component';
 
+import { CpdMainComponent } from './cpd/cpd-main/cpd-main.component';
+import { CpdAddComponent } from './cpd/cpd-add/cpd-add.component';
+import { CpdDetailsComponent } from './cpd/cpd-details/cpd-details.component';
+import { CpdListComponent } from './cpd/cpd-list/cpd-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -64,6 +69,11 @@ const routes: Routes = [
   {path: 'user/:email/service-add', component: ServiceAddComponent},
   {path: 'user/:email/service-details/:id', component: ServiceDetailsComponent},
   {path: 'user/:email/service-list', component: ServiceListComponent},
+
+  {path: 'cpd/:email', component: CpdMainComponent},
+  {path: 'user/:email/cpd-add', component: CpdAddComponent},
+  {path: 'user/:email/cpd-details/:id', component: CpdDetailsComponent},
+  {path: 'user/:email/cpd-list', component: CpdListComponent},
 
 ];
 

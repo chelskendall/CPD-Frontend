@@ -1,0 +1,156 @@
+/* Top navigation menu */
+.navbar {
+    position: fixed; /* Fixed top nav (stay in place on scroll) */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+  }
+  
+  .nav-item {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 14px 16px;
+  }
+  
+  /* Sidebar menu */
+  .sidenav {
+  height: 100%; /* Full-height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 2; /* Stay on top */
+  top: 75px; /* Stay at the top */
+  left: 0;
+  background-color: #bdbbbb; /* Grey */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  }
+  
+  /* Sidebar menu links */
+  .sidenav a {
+  padding: 10px 8px 10px 16px;
+  /* text-decoration: underline; */
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+  display: block;
+  }
+  
+  /* When you mouse over the sidebar links, change their color */
+  .sidenav a:hover {
+  /* color: #f1f1f1; */
+  background-color: #fffefe; /* Grey */
+  }
+  
+  hr {
+    margin: 1rem 0;
+    border-top: 1px solid rgb(7, 7, 7);
+    opacity: 0.25;
+  }
+
+  .example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+  }
+  
+  .example-month-picker .mat-calendar-arrow {
+    display: none;
+  }
+  
+  /* Style page content */
+  .container {
+    margin-top: 70px; /* Add a top margin to avoid content overlay */
+    margin-left: 180px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+    width: 400px;
+    height: 20px;
+    }
+
+  /* Drag and drop file upload */
+  * {
+    box-sizing: border-box;
+}
+
+.progress {
+    margin-bottom: 30px;
+}
+
+.fileupload {
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+    background-color: #cbcbcb;
+    height: 200px;
+    width: 100%;
+    cursor: pointer;
+    border: 2px dashed #0f68ff;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    background-position: center 28px;
+}
+
+.ddinfo {
+    display: block;
+    text-align: center;
+    padding-top: 130px;
+    color: #a0a1a2;
+}
+
+.image-list {
+    display: flex;
+    width: 100%;
+    background: #C2DFFC;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 10px 10px 10px 15px;
+    margin-bottom: 10px;
+}
+
+.image-list p {
+    line-height: normal;
+    padding: 0;
+    margin: 0 0 0 14px;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    color: #150938;
+    font-size: 14px;
+}
+
+.message {
+  text-align: center;
+  color: #C2DFFC;
+}
+
+.remove {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.profile img {
+  width: 100%;
+}
+
+.remove img {
+  width: 15px;
+  position: relative;
+  top: -2px;
+}
+
+.fileUploadWrapper .card-body {
+    max-height: 330px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+@media(max-width: 767px) {
+    .container {
+        width: 280px;
+        margin: 20px auto 100px;
+    }
+}  

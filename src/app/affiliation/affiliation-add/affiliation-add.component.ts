@@ -115,7 +115,8 @@ export class AffiliationAddComponent implements OnInit {
   /* Submit affiliation */
   onSubmit() {
     if (this.affiliationForm.valid) {
-    this.AffiliationService.addAffiliation( this.affiliationForm.value.typeAffiliation, 
+    this.AffiliationService.addAffiliation( 
+      this.affiliationForm.value.typeAffiliation, 
       this.affiliationForm.value.organization,
       this.affiliationForm.value.affiliateTitle,
       this.affiliationForm.value.affiliateStart,

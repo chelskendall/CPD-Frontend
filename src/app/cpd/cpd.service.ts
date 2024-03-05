@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Academic } from './academic.model';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Cpd } from '../cpd/cpd.model';
 import  axios  from 'axios';
-
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AcademicService {
+export class CpdService {
 
   baseUrl = 'http://localhost:3000/user/:email';
   private token: string | null;
@@ -33,7 +32,7 @@ export class AcademicService {
 
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.post(`${this.baseUrl}/newacademic`, formData, {
+    return this.http.post(`${this.baseUrl}/newcpd`, formData, {
       headers,
       reportProgress: true,
       observe: 'events'
@@ -41,39 +40,45 @@ export class AcademicService {
       catchError(this.handleError)
     )
   }
-
-   // Create new Academic
-  addAcademic(establishment: string,
-    courseTitle: string,
-    academicStart: Date,
-    academicEnd: Date,): 
+   
+  //Create new CPD
+  addCpd(typeCPD: string,
+    cpdTitle: string,
+    cpdDescribe: string,
+    cpdStart: Date, 
+    cpdEnd: Date,
+    cpdHours: number,
+    cpdReflect: string,): 
     
     Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-     
+
     var formData: any = new FormData();
-    formData.append('establishment', establishment);
-    formData.append('courseTitle', courseTitle);
-    formData.append('academicStart', academicStart);
-    formData.append('academicEnd', academicEnd);
-    
-    return this.http.post(`${this.baseUrl}/newacademic`, formData, { headers })
+    formData.append('typeCPD', typeCPD);
+    formData.append('cpdTitle', cpdTitle);
+    formData.append('cpdDescribe', cpdDescribe);
+    formData.append('cpdStart', cpdStart);
+    formData.append('cpdEnd', cpdEnd);
+    formData.append('cpdHours', cpdHours);
+    formData.append('cpdReflect', cpdReflect);
+
+    return this.http.post(`${this.baseUrl}/newcpd`, formData, { headers })
     .pipe(catchError(this.handleError));
   }
 
-  //get all Academic - list
-  getAcademicList() {
+  //get all CPD - list
+  getCpdList() {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get(`${this.baseUrl}/allacademic`, { headers });
+    return this.http.get(`${this.baseUrl}/allcpd`, { headers });
   }
 
-  //get one Academic
-  getAcademic(id: any): Observable<Academic> {
+  //get one CPD
+  getCpd(id: any): Observable<Cpd> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get<Academic>(`${this.baseUrl}/academic/${id}`, { headers })
+    return this.http.get<Cpd>(`${this.baseUrl}/cpd/${id}`, { headers })
     .pipe(
       map((res: any) => {
         return res || {};
@@ -82,20 +87,26 @@ export class AcademicService {
     );
   }
 
-  //update Academic
-  updateAcademic(id: any, data: any): Observable<any> {
+  //update CPD
+  updateCpd(id: any, data: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.put(`${this.baseUrl}/updateacademic/${id}`, data, { headers })
+    return this.http.put(`${this.baseUrl}/updatecpd/${id}`, data, { headers })
     .pipe(catchError(this.handleError));
   }
 
-  //delete academic
-  deleteAcademic(id: any): Observable<any> {
+  //delete CPD
+  deleteCpd(id: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.delete(`${this.baseUrl}/deleteacademic/${id}`, { headers })
+    return this.http.delete(`${this.baseUrl}/deletecpd/${id}`, { headers })
     .pipe(catchError(this.handleError));
+  }
+
+  deleteAll(): Observable<any> {
+    const email = localStorage.getItem('theUser');
+    const headers = {'Authorization': `Bearer ${this.token}`};
+    return this.http.delete(this.baseUrl);
   }
 
   // Error
@@ -113,5 +124,6 @@ export class AcademicService {
           errorMessage;
           });
   }
+
 
 }

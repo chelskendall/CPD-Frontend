@@ -30,47 +30,50 @@
   <div class="container">
   <div class="row justify-content-center mt-5">
   <div class="inner-wrapper col-md-4">
-      <form [formGroup]="affiliationForm" (ngSubmit)="onSubmit()"
-            #resetAffiliationForm="ngForm" >
+      <form [formGroup]="cpdForm" (ngSubmit)="onSubmit()"
+            #resetCpdForm="ngForm" >
     
-      <p-card header="Professional Affiliations" [style]="{ width: '700px' }">
+      <p-card header="CPD Training" [style]="{ width: '700px' }">
         <mat-divider fxFlex="1 0"></mat-divider><br><br>
 
+    <!-- Drop down selection -->
+        <mat-form-field>
+            <mat-label>CPD Type</mat-label>
+            <mat-select formControlName="typeCPD">
+            <mat-option
+                [value]="typeArray"
+                *ngFor="let typeArray of typeArray"
+                >{{ typeArray }}
+            </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('typeCPD', 'required')">
+            Selection is required
+            </mat-error>
+        </mat-form-field>
+        <br><br>
+
         <div class="form-group">
-          <label>Organization</label>
+          <label>Activity Title</label>
           <input
             class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
             type="text"
-            formControlName="organization"
-            required
-          />
-        </div><br>
-        
-        <div class="form-group">
-          <label>Title of Membership / Certificate / Award / Grant</label>
-          <input
-            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-            type="text"
-            formControlName="affiliateTitle"
+            formControlName="cpdTitle"
             required
           />
         </div><br>
 
-<!-- Drop down selection -->
-  <mat-form-field>
-    <mat-label>Affiliation Type</mat-label>
-    <mat-select formControlName="typeAffiliation">
-      <mat-option
-        [value]="typeArray"
-        *ngFor="let typeArray of typeArray"
-        >{{ typeArray }}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="handleError('typeAffiliation', 'required')">
-      Selection is required
-    </mat-error>
-  </mat-form-field>
-  <br><br>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea
+              class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              type="text"
+              rows="4"
+              formControlName="cpdDescribe"
+              placeholder="Summary of content, purpose and rationale or learning objectives."
+              required>
+            </textarea>
+          </div><br>
+
 
 <!-- Left & right block for Dates -->
 
@@ -84,14 +87,14 @@
               readonly
               [matDatepicker]="picker1"
               placeholder="Start Date"
-              formControlName="affiliateStart"
+              formControlName="cpdStart"
             />
             <mat-datepicker-toggle
               matSuffix
               [for]="picker1"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
-            <mat-error *ngIf="handleError('affiliateStart', 'required')">
+            <mat-error *ngIf="handleError('cpdStart', 'required')">
               Start date is required
             </mat-error>
           </mat-form-field><br><br>
@@ -108,25 +111,56 @@
               readonly
               [matDatepicker]="picker2"
               placeholder="End Date"
-              formControlName="affiliateEnd"
+              formControlName="cpdEnd"
             />
             <mat-datepicker-toggle
               matSuffix
               [for]="picker2"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
-            <mat-error *ngIf="handleError('affiliateEnd', 'required')">
+            <mat-error *ngIf="handleError('cpdEnd', 'required')">
               End date is required
             </mat-error>
           </mat-form-field><br><br>
     </div>
 </mat-card>
-     
-        <!--under input: (dateChange)="formatDate($event)" -->
+  
+
+<!-- CPD HOURS -->
+
+<br><br>
+<div class="controlers-wrapper col-md-4">
+    <div class="form-outline">
+        <label>CPD Hours</label>
+        <input 
+            type="number" 
+            formControlName="cpdHours" 
+            class="form-control" 
+            placeholder="eg. 25"
+        />
+        <label class="form-label" for="cpdHours"></label>
+    </div>
+</div><br>
+
+
+<!-- Resume main content -->
+
+<div class="form-group">
+    <label>Reflection</label>
+    <textarea
+      class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      type="text"
+      rows="4"
+      formControlName="cpdReflect"
+      placeholder="Key things you learned and how you can put them into practice."
+      required>
+    </textarea>
+  </div><br>
+        
   
 <!--File Upload Field-->
-<br><br>
-  <form [formGroup]="affiliationForm">
+<br>
+  <form [formGroup]="cpdForm">
     <div class="row">
 
       <!-- Progress Bar -->
@@ -182,6 +216,7 @@
       
         </p-card>
       </form>
+
     </div>
   </div>
   </div>
