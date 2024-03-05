@@ -1,3 +1,5 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
+
 <!-- Top navigation -->
 <div>
     <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">  
@@ -27,9 +29,51 @@
   </div>
       
   <!-- Main Content -->
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Academic Qualification Entries</h2>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div>
 
+  <a (click)="navigateToAcademicAdd()" class="btn btn-success btn-sm">Add Academic Qualifications</a>
+  <br><br>
+
+  <p *ngIf="Academics.length <= 0" class="no-data">
+      There is no entry added yet!
+  </p>
+
+  <div class="table-responsive" *ngIf="Academics.length > 0">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Establishment</th>
+            <th scope="col">Course Title</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Responsibilities</th>
+            <th class="text-center" scope="col">Edit/Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let academic of Academics; let i = index">
+            <td>{{academic.establishment}}</td>
+            <td>{{academic.courseTitle}}</td>
+            <td>{{academic.academicStart}}</td>
+            <td>{{academic.academicEnd}}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/user/:email/academic-details/{{academic._id}}"><i class="bi bi-pencil-square"></i></button>&nbsp;
+              <button class="btn btn-sm btn-danger" (click)="delete(academic._id, i)"><i class="bi bi-trash3-fill"></i></button>
+          </tr>
+        </tbody>
+   
+      </table>
+  </div>
+</div> 
+
+
+<!--
 <div class="container academics-table">
-    <!-- No data message -->
     <div class="alert alert-success text-center" role="alert" *ngIf="Academic.length <= 0">
         No Academic Qualifications added yet!
     </div>
@@ -46,3 +90,4 @@
         </li>
     </ul>
 </div>
+-->

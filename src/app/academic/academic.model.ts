@@ -1,7 +1,7 @@
 export class Academic {
     establishment!: string;
     courseTitle!: string;
-    academicStart!: string;
-    academicEnd!: string;
+    academicStart!: Date;
+    academicEnd!: Date;
     files!: string;
 }

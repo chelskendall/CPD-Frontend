@@ -15,12 +15,17 @@ export class AcademicListComponent implements OnInit {
 email: string | null | undefined;
 
 
-Academic: any = [];
+Academics: any = [];
   constructor(public AcademicService: AcademicService,
               public router: Router,) {
-    this.getAcademic();
+    //this.getAcademic();
+    this.AcademicService.getAcademic().subscribe((academics: any) => {
+      //this.Academics = res['academics'];
+      this.Academics = academics.data;
+      console.log(academics);
+    })
   }
-
+ 
 ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
     document.getElementById("email-value").innerHTML = email;*/
@@ -30,10 +35,24 @@ ngOnInit(): void {
     }
   }
 
+  /*
   getAcademic() {
     this.AcademicService.getAcademic().subscribe((res) => {
-      this.Academic = res['academics'];
+      this.Academics = res['academics'];
     })
+  }*/
+
+  delete(id: any, i: any) {
+    if (window.confirm('Are you sure?')) {
+      this.AcademicService.deleteAcademic(id).subscribe((data: any) => {
+        this.Academics.splice(i, 1);
+      });
+    }
+  }
+
+  navigateToAcademicAdd() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/user', email, 'academic-add']);
   }
 
   navigateToPersonal() {

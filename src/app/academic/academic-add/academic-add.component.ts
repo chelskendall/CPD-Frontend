@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { AcademicService } from "src/app/academic/academic.service";
 import { HttpEvent, HttpEventType } from '@angular/common/http';
@@ -12,27 +13,11 @@ import { Router } from '@angular/router';
 
 export class AcademicAddComponent implements OnInit {
   
-  email: string | null | undefined;
-  preview!: string;
+  preview: string;
   academicForm: FormGroup;
   percentDone: any = 0;
   academics = [];
-
-  constructor(
-    public fb: FormBuilder,
-    public router: Router,
-    public AcademicService: AcademicService,
-    private ngZone: NgZone,
-  ) {
-    // Reactive Form
-    this.academicForm = this.fb.group({
-      establishment: new FormControl('', [Validators.required]),
-      courseTitle: new FormControl('', [Validators.required]),
-      academicStart: new FormControl('', [Validators.required]),
-      academicEnd: new FormControl('', [Validators.required]),
-      files: [null]
-    })
-  }
+  email: string | null | undefined;
 
   ngOnInit(): void {
     /*const email = localStorage.getItem('theUser');
@@ -41,42 +26,40 @@ export class AcademicAddComponent implements OnInit {
     if (!localStorage.getItem('token') || localStorage.getItem('token') === "") {
       alert("Session Expired. Login again")
     }
-
-    this.AcademicService.addAcademic(
-      this.academicForm.value.establishment,
-      this.academicForm.value.courseTitle,
-      this.academicForm.value.academicStart,
-      this.academicForm.value.academicEnd,
-      this.academicForm.value.files).subscribe(
-      (res) => {
-        console.log('Added successfully!' + res);
-        this.router.navigate(['/user/:email/academic-list'])
-        //this.ngZone.run(() => this.router.navigateByUrl('/user/:email/employment-list'));
-      },
-      (err: any) => {
-        console.log(err);
-      });
-
   }
 
-// Image Preview
+  constructor(
+    public fb: FormBuilder,
+    public router: Router,
+    public AcademicService: AcademicService
+  ) {
+    // Reactive Form
+    this.academicForm = this.fb.group({
+      establishment: [''],
+      courseTitle: [''],
+      academicStart: ['', [Validators.required]],
+      academicEnd: ['', [Validators.required]],
+      files: [null],
+    })
+  } 
+
+  // Image Preview
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.academicForm.patchValue({
       files: file
     });
     this.academicForm.get('files').updateValueAndValidity()
-    
-  // File Preview
+
+    // File Preview
     const reader = new FileReader();
     reader.onload = () => {
       this.preview = reader.result as string;
     }
     reader.readAsDataURL(file)
-  
   }
 
-/*  submitForm() {
+  onSubmit() {
     this.AcademicService.addAcademic(
       this.academicForm.value.establishment,
       this.academicForm.value.courseTitle,
@@ -96,43 +79,18 @@ export class AcademicAddComponent implements OnInit {
           console.log(`Uploaded! ${this.percentDone}%`);
           break;
         case HttpEventType.Response:
-          console.log('Academic successfully created!', event.body);
+          console.log('User successfully created!', event.body);
           this.percentDone = false;
           this.router.navigate(['/user/:email/academic-list'])
       }
     })
-  }*/
-
-  onSubmitA() {
-    if (this.academicForm.valid) {
-      this.AcademicService.addAca(this.academicForm.value).subscribe(
-        (res) => {
-          console.log('Added successfully!' + res);
-          this.ngZone.run(() => this.router.navigateByUrl('/user/:email/academic-list'));
-        },
-        (err: any) => {
-          console.log(err);
-        });
-      }
   }
 
-  /* Submit academics */
-  onSubmit() {
-    this.AcademicService.addAcademic(
-      this.academicForm.value.establishment,
-      this.academicForm.value.courseTitle,
-      this.academicForm.value.academicStart,
-      this.academicForm.value.academicEnd,
-      this.academicForm.value.files).subscribe(
-      (res) => {
-        console.log('Added successfully!' + res);
-        this.router.navigate(['/user/:email/academic-list'])
-        //this.ngZone.run(() => this.router.navigateByUrl('/user/:email/employment-list'));
-      },
-      (err: any) => {
-        console.log(err);
-      });
-  }
+
+  /* Get errors */
+  public handleError = (controlName: string, errorName: string) => {
+    return this.academicForm.controls[controlName].hasError(errorName);
+  };
 
   navigateToPersonal() {
     const email = localStorage.getItem('theUser');
