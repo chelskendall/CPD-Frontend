@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
 
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -53,6 +54,7 @@ ng g class affiliation/affiliation --type=model*/
 
 @NgModule({
   declarations: [
+    DragDropFileUploadDirective,
     AppComponent,
     LoginComponent,
     RegisterComponent,

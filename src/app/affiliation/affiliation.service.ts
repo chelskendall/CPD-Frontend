@@ -20,12 +20,46 @@ export class AffiliationService {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
    }
 
-   
-  //add new Affiliation
-  addAffiliation(data: Affiliation): Observable<any> {
+   //add files
+   addFiles(images: File) {
+    var arr = []
+    var formData = new FormData();
+    arr.push(images);
+
+    arr[0].forEach((item, i) => {
+      formData.append('files', arr[0][i]);
+    })
+
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.post(`${this.baseUrl}/newaffiliation`, data, { headers })
+    return this.http.post(`${this.baseUrl}/newaffiliation`, formData, {
+      headers,
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      catchError(this.handleError)
+    )
+  }
+   
+  //add new Affiliation
+  addAffiliation(typeAffiliation: string,
+    organization: string,
+    affiliateTitle: string,
+    affiliateStart: Date, 
+    affiliateEnd: Date,): 
+    
+    Observable<any> {
+    const email = localStorage.getItem('theUser');
+    const headers = {'Authorization': `Bearer ${this.token}`};
+
+    var formData: any = new FormData();
+    formData.append('typeAffiliation', typeAffiliation);
+    formData.append('organization', organization);
+    formData.append('affiliateTitle', affiliateTitle);
+    formData.append('affiliateStart', affiliateStart);
+    formData.append('affiliateEnd', affiliateEnd);
+
+    return this.http.post(`${this.baseUrl}/newaffiliation`, formData, { headers })
     .pipe(catchError(this.handleError));
   }
 

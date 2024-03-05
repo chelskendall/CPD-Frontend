@@ -1,4 +1,7 @@
 import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Affiliation } from 'src/app/affiliation/affiliation.model';
 import { AffiliationService } from 'src/app/affiliation/affiliation.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,17 +19,27 @@ export class AffiliationDetailsComponent implements OnInit {
   updateForm: FormGroup;
   email: string | null | undefined;
 
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  typeArray: any = ['Membership', 'Certificate', 'Award', 'Grant', 'Other'];
+  fileArr = [];
+  imgArr = [];
+  fileObj = [];
+  msg: string;
+  progress: number = 0;
+
   constructor(
-    private AffiliationService: AffiliationService,
+    public AffiliationService: AffiliationService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public formBuilder: FormBuilder,
-    private ngZone: NgZone) 
+    private ngZone: NgZone,
+    private sanitizer: DomSanitizer,
+    ) 
     {
       this.getId = this.activatedRoute.snapshot.paramMap.get('id');
       this.AffiliationService.getAffiliation(this.getId).subscribe((data: any) => {
       this.updateForm.setValue({
-        typeAffiliation: data.data.typeAffiliation,
+        typeAffiliation: [data.data.typeAffiliation, [Validators.required]],
         organization: data.data.organization,
         affiliateTitle: data.data.affiliateTitle,
         affiliateStart: [data.data.affiliateStart, [Validators.required]],
@@ -34,7 +47,7 @@ export class AffiliationDetailsComponent implements OnInit {
         });
       });
       this.updateForm = this.formBuilder.group({
-        typeAffiliation: [''],
+        typeAffiliation: ['', [Validators.required]],
         organization: [''],
         affiliateTitle: [''],
         affiliateStart: ['', [Validators.required]],
@@ -55,6 +68,58 @@ export class AffiliationDetailsComponent implements OnInit {
   public handleError = (controlName: string, errorName: string) => {
     return this.updateForm.controls[controlName].hasError(errorName);
   };
+
+  upload(e) {
+    const fileListAsArray = Array.from(e);
+    fileListAsArray.forEach((item, i) => {
+      const file = e as HTMLInputElement;
+      const url = URL.createObjectURL(file[i]);
+      this.imgArr.push(url);
+      this.fileArr.push({ item, url: url });
+    });
+
+    this.fileArr.forEach((item) => {
+      this.fileObj.push(item.item);
+    });
+
+    // Set files form control
+    this.updateForm.patchValue({
+      files: this.fileObj,
+    });
+
+    this.updateForm.get('files').updateValueAndValidity();
+
+    // Upload to server
+    this.AffiliationService
+      .addFiles(this.updateForm.value.files)
+      .subscribe((event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log('Request has been made!');
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log('Response header has been received!');
+            break;
+          case HttpEventType.UploadProgress:
+            this.progress = Math.round((event.loaded / event.total) * 100);
+            console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.Response:
+            console.log('File uploaded successfully!', event.body);
+            setTimeout(() => {
+              this.progress = 0;
+              this.fileArr = [];
+              this.fileObj = [];
+              this.msg = 'File uploaded successfully!';
+            }, 3000);
+        }
+      });
+  }
+
+  // Clean Url
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 
   onUpdate(): any {
     this.AffiliationService.updateAffiliation(this.getId, this.updateForm.value)
