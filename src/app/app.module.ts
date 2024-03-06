@@ -52,14 +52,19 @@ import { CpdAddComponent } from './cpd/cpd-add/cpd-add.component';
 import { CpdDetailsComponent } from './cpd/cpd-details/cpd-details.component';
 import { CpdListComponent } from './cpd/cpd-list/cpd-list.component';
 
+import { EndorsementMainComponent } from './endorsement/endorsement-main/endorsement-main.component';
+import { EndorsementAddComponent } from './endorsement/endorsement-add/endorsement-add.component';
+import { EndorsementDetailsComponent } from './endorsement/endorsement-details/endorsement-details.component';
+import { EndorsementListComponent } from './endorsement/endorsement-list/endorsement-list.component';
+
 
 /*
-ng g s cpd/cpd
-ng g component cpd/cpd-add --module app
-ng g component cpd/cpd-details --module app
-ng g component cpd/cpd-list --module app
-ng g component cpd/cpd-main --module app
-ng g class cpd/cpd --type=model*/
+ng g s endorsement/endorsement
+ng g component endorsement/endorsement-add --module app
+ng g component endorsement/endorsement-details --module app
+ng g component endorsement/endorsement-list --module app
+ng g component endorsement/endorsement-main --module app
+ng g class endorsement/endorsement --type=model*/
 
 
 @NgModule({
@@ -94,6 +99,10 @@ ng g class cpd/cpd --type=model*/
     CpdAddComponent,
     CpdDetailsComponent,
     CpdListComponent,
+    EndorsementMainComponent,
+    EndorsementAddComponent,
+    EndorsementDetailsComponent,
+    EndorsementListComponent,
   ],
   imports: [
     FormsModule,
@@ -144,6 +153,11 @@ ng g class cpd/cpd --type=model*/
       {path: 'user/:email/cpd-add', component: CpdAddComponent},
       {path: 'user/:email/cpd-details/:id', component: CpdDetailsComponent},
       {path: 'user/:email/cpd-list', component: CpdListComponent},
+
+      {path: 'endorsement/:email', component: EndorsementMainComponent},
+      {path: 'user/:email/endorsement-add', component: EndorsementAddComponent},
+      {path: 'user/:email/endorsement-details/:id', component: EndorsementDetailsComponent},
+      {path: 'user/:email/endorsement-list', component: EndorsementListComponent},
 
     ])
   ],

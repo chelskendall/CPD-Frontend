@@ -36,6 +36,11 @@ import { CpdAddComponent } from './cpd/cpd-add/cpd-add.component';
 import { CpdDetailsComponent } from './cpd/cpd-details/cpd-details.component';
 import { CpdListComponent } from './cpd/cpd-list/cpd-list.component';
 
+import { EndorsementMainComponent } from './endorsement/endorsement-main/endorsement-main.component';
+import { EndorsementAddComponent } from './endorsement/endorsement-add/endorsement-add.component';
+import { EndorsementDetailsComponent } from './endorsement/endorsement-details/endorsement-details.component';
+import { EndorsementListComponent } from './endorsement/endorsement-list/endorsement-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -74,6 +79,11 @@ const routes: Routes = [
   {path: 'user/:email/cpd-add', component: CpdAddComponent},
   {path: 'user/:email/cpd-details/:id', component: CpdDetailsComponent},
   {path: 'user/:email/cpd-list', component: CpdListComponent},
+
+  {path: 'endorsement/:email', component: EndorsementMainComponent},
+  {path: 'user/:email/endorsement-add', component: EndorsementAddComponent},
+  {path: 'user/:email/endorsement-details/:id', component: EndorsementDetailsComponent},
+  {path: 'user/:email/endorsement-list', component: EndorsementListComponent},
 
 ];
 

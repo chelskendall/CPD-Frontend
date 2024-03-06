@@ -1,0 +1,44 @@
+<!-- Top navigation -->
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="container mt-3"> </div>
+  </div>
+ 
+<!-- Side navigation -->
+<div class="sidenav">
+    <a (click)="navigateToPersonal()">Personal Details</a><br>
+    <a (click)="navigateToEmployment()">Employment History</a><br>
+    <a (click)="navigateToAcademic()">Academic Qualifications</a><br>
+    <a (click)="navigateToAffiliation()">Professional Affiliations</a><br>
+    <a (click)="navigateToService()">Professional Services</a><br>
+    <a (click)="navigateToCPD()">CPD Training</a><br>
+    <a (click)="navigateToEndorsement()">Endorsements</a><br>
+  </div>
+
+<!-- Page content -->
+  <div class="container">
+
+    <div class="jumbotron">
+        <h1 class="display-4"><strong>Endorsements</strong></h1>
+        <p class="my-4"><mark>Here you can enter ...</mark></p>
+        <hr class="my-4">
+        <p><em>Choose an action below to start!</em></p><br>
+        <p class="lead">
+          <a (click)="navigateToEndorsementAdd()" class="btn btn-success btn-md" role="button">Add Endorsements</a>
+          <br><br>
+          <a (click)="navigateToEndorsementList()" class="btn btn-success btn-md" role="button">View Entries</a>
+        </p>
+      </div>
+
+  </div>
