@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -120,7 +119,7 @@ export class AcademicAddComponent implements OnInit {
         this.ngZone.run(() => this.router.navigateByUrl('/user/:email/academic-list'));
       },
       (err: any) => {
-        console.log(err);
+        console.log(err); 
       });
     }
 }

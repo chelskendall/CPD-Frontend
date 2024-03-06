@@ -32,7 +32,7 @@ export class EndorsementService {
 
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.post(`${this.baseUrl}/newendorsement`, formData, {
+    return this.http.post(`${this.baseUrl}/newendorse`, formData, {
       headers,
       reportProgress: true,
       observe: 'events'
