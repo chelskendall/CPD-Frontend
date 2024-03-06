@@ -58,7 +58,7 @@ export class EndorsementService {
     formData.append('refereePhone', refereePhone);
     formData.append('refereeDate', refereeDate);
 
-    return this.http.post(`${this.baseUrl}/newendorsement`, formData, { headers })
+    return this.http.post(`${this.baseUrl}/newendorse`, formData, { headers })
     .pipe(catchError(this.handleError));
   }
 
@@ -66,14 +66,14 @@ export class EndorsementService {
   getEndorsementList() {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get(`${this.baseUrl}/allendorsement`, { headers });
+    return this.http.get(`${this.baseUrl}/allendorse`, { headers });
   }
 
   //get one Endorsement
   getEndorsement(id: any): Observable<Endorsement> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.get<Endorsement>(`${this.baseUrl}/endorsement/${id}`, { headers })
+    return this.http.get<Endorsement>(`${this.baseUrl}/endorse/${id}`, { headers })
     .pipe(
       map((res: any) => {
         return res || {};
@@ -86,7 +86,7 @@ export class EndorsementService {
   updateEndorsement(id: any, data: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.put(`${this.baseUrl}/updateendorsement/${id}`, data, { headers })
+    return this.http.put(`${this.baseUrl}/updateendorse/${id}`, data, { headers })
     .pipe(catchError(this.handleError));
   }
 
@@ -94,7 +94,7 @@ export class EndorsementService {
   deleteEndorsement(id: any): Observable<any> {
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    return this.http.delete(`${this.baseUrl}/deleteendorsement/${id}`, { headers })
+    return this.http.delete(`${this.baseUrl}/deleteendorse/${id}`, { headers })
     .pipe(catchError(this.handleError));
   }
 
