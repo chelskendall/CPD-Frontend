@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
    constructor(
     public AuthService: AuthService, 
     private router: Router,
-    private usersSub: Subscription
+    //private usersSub: Subscription
     ) 
   { 
     this.AuthService.errorMessage.subscribe(message => {
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  //private usersSub: Subscription;
+  private usersSub: Subscription;
 
   users: User[] = [];
 
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       || email.trim() === '' || password.trim() === '' || passwordConfirmation.trim() === '') {
         alert("Fill in ALL fields"); } 
       else {
-    this.AuthService.addUserdb(email,password,passwordConfirmation)
+    this.AuthService.addUserdb(email, password, passwordConfirmation)
     }
   }
 

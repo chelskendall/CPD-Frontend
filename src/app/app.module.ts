@@ -19,6 +19,7 @@ import { AngularMaterialModule } from './material.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password/reset-password.component';
 import { HomeComponent } from './home/home.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 
@@ -60,11 +61,12 @@ import { EndorsementListComponent } from './endorsement/endorsement-list/endorse
 
 /*
 ng g s endorsement/endorsement
-ng g component endorsement/endorsement-add --module app
+ng g component resetpassword/endorsement-add --module app
 ng g component endorsement/endorsement-details --module app
 ng g component endorsement/endorsement-list --module app
 ng g component endorsement/endorsement-main --module app
-ng g class endorsement/endorsement --type=model*/
+ng g class endorsement/endorsement --type=model
+*/
 
 
 @NgModule({
@@ -73,6 +75,7 @@ ng g class endorsement/endorsement --type=model*/
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ResetPasswordComponent,
     HomeComponent,
     HomeUserComponent,
     PersonalMainComponent,
@@ -122,6 +125,7 @@ ng g class endorsement/endorsement --type=model*/
       {path:'', component: HomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'users', component: ResetPasswordComponent},
       {path: ':email', component: HomeUserComponent},
 
       {path: 'personal/:email', component: PersonalMainComponent},

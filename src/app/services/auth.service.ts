@@ -65,7 +65,7 @@ export class AuthService {
          }
        ); 
   }
- 
+
   passwordResetdb(email: string, password: string, passwordConfirmation: string){
     const passon = {email: email, password: password, passwordConfirmation: passwordConfirmation};
 
