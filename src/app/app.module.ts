@@ -19,7 +19,7 @@ import { AngularMaterialModule } from './material.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ResetPasswordComponent } from './reset-password/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HomeComponent } from './home/home.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 
