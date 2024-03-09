@@ -61,8 +61,11 @@
           class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
           type="text"
           formControlName="phone"
+          placeholder="eg. 8681234567"
           required
         />
+        <small *ngIf="updateForm.get('phone').invalid && updateForm.get('phone').touched" class="text-danger">Phone number must be 10 digits</small>
+
       </div><br>
       
       <div class="form-group">
@@ -71,8 +74,10 @@
           class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
           type="text"
           formControlName="emailAddress"
+          placeholder="eg. cpdtracker@gmail.com"
           required
         />
+        <small *ngIf="updateForm.get('emailAddress').invalid && updateForm.get('emailAddress').touched" class="text-danger">Email address invalid</small>
       </div><br>
       
       <div class="form-group">

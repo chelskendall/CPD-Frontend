@@ -67,8 +67,9 @@
                     type="text" 
                     formControlName="refereePhone" 
                     class="form-control" 
-                    placeholder="868-123-4567"
+                    placeholder="eg. 8681234567"
                 />
+                <mat-error *ngIf="updateForm.get('refereePhone').invalid">Phone number must be 10 digits</mat-error>
                 <label class="form-label" for="refereePhone"></label>
             </div>
         </div>

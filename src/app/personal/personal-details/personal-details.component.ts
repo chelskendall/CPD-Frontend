@@ -2,7 +2,7 @@ import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Personal } from 'src/app/personal/personal.model';
 import { PersonalService } from 'src/app/personal/personal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 
 @Component({
@@ -29,8 +29,8 @@ export class PersonalDetailsComponent implements OnInit {
       this.updateForm.setValue({
         firstName: data.data.firstName,
         lastName: data.data.lastName,
-        phone: data.data.phone,
-        emailAddress: data.data.emailAddress,
+        phone: [data.data.phone, [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+        emailAddress: [data.data.emailAddress, [Validators.email]],
         mailAddress: data.data.mailAddress,
         statement: data.data.statement
         });
@@ -38,8 +38,8 @@ export class PersonalDetailsComponent implements OnInit {
       this.updateForm = this.formBuilder.group({
         firstName: [''],
         lastName: [''],
-        phone: [''],
-        emailAddress: [''],
+        phone: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+        emailAddress: ['', [Validators.email]],
         mailAddress: [''],
         statement: ['']
       })

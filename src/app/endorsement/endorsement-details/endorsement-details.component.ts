@@ -39,15 +39,15 @@ export class EndorsementDetailsComponent implements OnInit {
       this.updateForm.setValue({
         refereeName: data.data.refereeName,
         refereePlace: data.data.refereePlace,
-        refereePhone: data.data.refereePhone,
+        refereePhone: [data.data.refereePhone, [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         refereeDate: [data.data.refereeDate, [Validators.required]],
         });
       });
       this.updateForm = this.formBuilder.group({
         refereeName: [''],
         refereePlace: [''],
-        refereePhone: ['', [Validators.required]],
-        refereeDate: [''],
+        refereePhone: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+        refereeDate: ['', [Validators.required]],
       })
     }
 

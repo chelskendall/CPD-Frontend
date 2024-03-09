@@ -45,7 +45,7 @@ export class EndorsementAddComponent implements OnInit {
     { this.endorsementForm = this.formBuilder.group({
       refereeName: ['', [Validators.required]],
       refereePlace: ['', [Validators.required]],
-      refereePhone: ['', [Validators.required]],
+      refereePhone: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       refereeDate: ['', [Validators.required]],
       files: [null],
     }); 

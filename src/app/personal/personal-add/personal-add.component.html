@@ -31,7 +31,7 @@
 <div class="row justify-content-center mt-5">
 <div class="col-md-4">
     <form [formGroup]="personalForm" (ngSubmit)="onSubmit()"
-          #resetEmploymentForm="ngForm">
+          #resetEmploymentForm="ngForm" novalidate>
   
     <p-card header="Personal Details" [style]="{ width: '700px' }">
       <mat-divider fxFlex="1 0"></mat-divider><br><br>
@@ -58,13 +58,16 @@
 
       <div class="form-group">
         <label>Phone Number</label>
-        <input
-          class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-          type="text"
-          formControlName="phone"
-          required
-        />
+          <input
+            class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+            type="text"
+            formControlName="phone"
+            placeholder="eg. 8681234567"
+            required
+          />
+          <small *ngIf="personalForm.get('phone').invalid && personalForm.get('phone').touched" class="text-danger">Phone number must be 10 digits</small>
       </div><br>
+ 
       
       <div class="form-group">
         <label>Email Address</label>
@@ -72,8 +75,10 @@
           class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
           type="text"
           formControlName="emailAddress"
+          placeholder="eg. cpdtracker@gmail.com"
           required
         />
+        <small *ngIf="personalForm.get('emailAddress').invalid && personalForm.get('emailAddress').touched" class="text-danger">Email address invalid</small>
       </div><br>
       
       <div class="form-group">
