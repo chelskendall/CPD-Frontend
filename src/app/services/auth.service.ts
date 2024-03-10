@@ -83,13 +83,20 @@ export class AuthService {
        );
   }
 
-  //fix mappings part
   getUserInfo(){
     const email = localStorage.getItem('theUser');
     const headers = {'Authorization': `Bearer ${this.token}`};
-    this.http.get<{mappings: []}>(("http://localhost:3000/usersinfo/"+email),{ headers })
+    this.http.get<{profiles: []}>(("http://localhost:3000/usersinfo/"+email),{ headers })
     .subscribe(messageData => {
-      this.Response.emit(messageData.mappings);
+      this.Response.emit(messageData.profiles);
+    }); 
+  }
+
+  getUserInfoAdmin(email: string){
+    const headers = {'Authorization': `Bearer ${this.token}`};
+    this.http.get<{profiles: []}>(("http://localhost:3000/usersinfo/"+email),{ headers })
+    .subscribe(messageData => {
+      this.Response.emit(messageData.profiles);
     }); 
   }
 
@@ -101,6 +108,24 @@ export class AuthService {
     .subscribe(messageData => {
       this.Response.emit(messageData.email);
     }); 
+  }
+
+  //Admin only
+  deletedb(email: string){
+    const headers = {'Authorization': `Bearer ${this.token}`};
+    const options = {
+      body: { email: email }
+    };
+    this.http.delete<{}>("http://localhost:3000/users/Administrator", { headers, ...options }).subscribe(
+      () => {
+        location.reload()
+      },
+      (error) => {
+        if (error.status === 401) {
+          alert(error.error.message);
+        }
+      }
+    );
   }
 
   getUsersUpdateListner(){

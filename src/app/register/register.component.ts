@@ -15,8 +15,7 @@ import { passwordMatchValidator } from '../helpers/password-match.directive';
 export class RegisterComponent implements OnInit {
 
   errorMessage: string | undefined;
-  //new line
-  email: any;
+  //email: any;
   
    constructor(
     public AuthService: AuthService, 
@@ -34,8 +33,8 @@ export class RegisterComponent implements OnInit {
 
   users: User[] = [];
 
-  addUser(event: { preventDefault: () => void; target: any; }){
-    //event.preventDefault()
+  addUser(event){
+    event.preventDefault()
     const target = event.target
     const email = target.querySelector('#email').value
     const password = target.querySelector('#password').value

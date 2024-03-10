@@ -23,6 +23,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HomeComponent } from './home/home.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 
+import { AdminComponent } from './admin/admin.component';
+
 import { PersonalMainComponent } from './personal/personal-main/personal-main.component';
 import { PersonalAddComponent } from './personal/personal-add/personal-add.component';
 import { PersonalDetailsComponent } from './personal/personal-details/personal-details.component';
@@ -78,6 +80,7 @@ ng g class endorsement/endorsement --type=model
     ResetPasswordComponent,
     HomeComponent,
     HomeUserComponent,
+    AdminComponent,
     PersonalMainComponent,
     PersonalAddComponent,
     PersonalDetailsComponent,
@@ -127,6 +130,7 @@ ng g class endorsement/endorsement --type=model
       {path: 'register', component: RegisterComponent},
       {path: 'users', component: ResetPasswordComponent},
       {path: ':email', component: HomeUserComponent},
+      {path: 'admin', component: AdminComponent},
 
       {path: 'personal/:email', component: PersonalMainComponent},
       {path: 'user/:email/personal-add', component: PersonalAddComponent},

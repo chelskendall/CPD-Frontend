@@ -1,0 +1,29 @@
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">  
+      <a href="#" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+    </nav>
+    <div class="container mt-3"> </div>
+</div>
+  
+<div class="container">
+      <header class="jumbotron">
+        <h1>Introduction to Professional Registration and Continuous Professional Development (CPD)</h1>
+      </header>
+
+    <h1 class ="title">Administrator</h1> 
+    <div class="join-form">
+      <ng-container *ngFor="let userinfo of Response"> 
+        <p class="names" (click)="navigateToUserInfo(userinfo.email)">{{ userinfo.email }}</p>
+      </ng-container>
+        <form (submit)="delete($event)" class="join-form">
+            <div class="input-group">
+            <label>Email:</label>
+            <input type="text" id="delete">
+            </div>
+            <button type="submit" class="btn">Delete User</button>
+        </form>
+    </div>   
+
+</div>      
