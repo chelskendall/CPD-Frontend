@@ -12,7 +12,6 @@
         <li><a (click)="navigateToUserProfile()" id="email"><span id="email-value"></span></a></li>
       </ul>
     </nav>
-  
     <div class="container mt-3"> </div>
   </div>
 
@@ -28,62 +27,116 @@
   </div>
 
 <!-- Page content -->
-  <div class="container">
-    <header class="jumbotron">
-      <h1>Introduction to Professional Registration and Continuous Professional Development (CPD)</h1>
-    </header>
+<div class="container pb-3">
+  <header class="jumbotron">
+    <h1><strong>Introduction to Professional Registration and Continuous Professional Development (CPD)</strong></h1>
+  </header>
+  
+  <mat-accordion>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <strong>Professional Registration</strong>
+        </mat-panel-title>
+        <mat-panel-description>
+          Your Path to Recognition and Expertise
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Professional Registration within engineering refers to the process by which engineers 
+        obtain formal recognition of their qualifications and experience, typically through a professional engineering organization 
+        or regulatory body. <br>This recognition demonstrates that an engineer has met specific educational, ethical, and competency 
+        standards, and is qualified to practice engineering in a particular jurisdiction.</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <strong>Continuous Professional Development (CPD)</strong>
+        </mat-panel-title>
+        <mat-panel-description>
+          Transforming Potential into Progress
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>A definition of CPD commonly accepted by The Engineering Council’s member institutions is 
+        “The systematic maintenance, improvement and broadening of knowledge and skill, and the development of personal qualities 
+        necessary for the execution of professional and technical duties throughout the practitioner’s working life.” 
+       <br> Continuing means one needs to commit oneself to a lifelong learning process and self-development.<br><br>
+       Initiating the CPD process commences with conducting an honest self-assessment and defining professional development objectives. 
+       The subsequent step involves creating a strategic action plan aimed at attaining these objectives. 
+       Once the CPD plan is established, it's time to actively engage in your professional development activities. 
+      </p>
+    </mat-expansion-panel>
     
-    <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <strong>Board of Engineering Trinidad & Tobago</strong>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'Close here.' : 'Want to learn how to join? Open here.'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        Registration certification by the Board of Engineering of Trinidad and Tobago (BOETT) means an obligation and accountability to conform to a legislated code of ethics 
+        and to protect public health, safety, and welfare; assessment, validation, and commitment of the engineer to demonstrate competence, objectivity, and expertise; 
+        and lastly, confidence and trust to meet recognized academic and professional standards.
+        <br><br>
+      </p>
+          <ul> 
+              <li>
+                Applicants for registration must satisfy that their <strong>Bachelor’s degree certificates are recognized and accredited</strong> 
+                and that they have <strong>at least four years of engineering experience </strong> after graduation.
+              </li><br> 
+              <li>
+                All eligible persons must provide evidence of “further learning” through a <strong>recognized Master’s degree or an accumulation of similar type academic knowledge</strong>.
+              </li><br> 
+              <li>
+                An <strong>application form</strong> must be downloaded, completed, and returned together with a <strong>TTD$200.00 application fee</strong>. 
+              </li><br>
+              <li>
+                Persons should also provide acceptable supporting evidence of <strong>qualifications and professional organization memberships</strong> (originals and one copy each) 
+                as well as <strong>statements from two sponsors</strong>, duly signed and dated, attesting to specifics of tasks performed that would now enable the applicant to undertake, 
+                on their own, engineering work of a professional standard.
+              </li><br> 
+          </ul>         
+    </mat-expansion-panel>
 
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Professional Registration
-          </mat-panel-title>
-          <mat-panel-description>
-            This is a summary of the content.
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Continous Professional Development (CPD)
-          </mat-panel-title>
-          <mat-panel-description>
-            This is a summary of the content.
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
-      </mat-expansion-panel>
-      
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Board of Engineering Trinidad & Tobago
-          </mat-panel-title>
-          <mat-panel-description>
-            {{panelOpenState ? 'Close here.' : 'Want to learn how? Open here.'}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open.</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            UK Council Engineering
-          </mat-panel-title>
-          <mat-panel-description>
-            {{panelOpenState ? 'Close here.' : 'Want to learn how? Open here.'}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open.</p>
-      </mat-expansion-panel>
-
-    </mat-accordion>
-  </div>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <strong>UK Council Engineering</strong>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'Close here.' : 'Want to learn how to join? Open here.'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        Their core purpose is to set and maintain the internationally recognized standards for the UK engineering profession, 
+        found in the UK Standard for Professional Engineering Competence (UK-SPEC) and the ICTTech Standard. Chartered Engineers (CEng) develop solutions 
+        to engineering problems using new or existing technologies, through innovation, creativity and change and/or they may have technical accountability 
+        for complex systems with significant levels of risk.
+        <br><br>
+      </p>
+        <ul>
+            <li>
+              Engineers wishing to apply for registration are first required to join a <strong>professional engineering institution</strong> 
+              or a <strong>professional affiliate</strong> of the Engineering Council, licensed to assess candidates.           
+            </li><br>
+            <li>
+              They must then <strong>inform their institution of their aim for professional registration</strong>, so that the institute can advise on title eligibility and finding a mentor.
+            </li><br>
+            <li>
+              Applicants need to <strong>record their professional development</strong>, and evidence on qualifications and experiences.
+            </li><br>
+            <li>
+              The assessment process starts with a <strong>written application</strong>, and once approved, the institution will submit a registration form to the Engineering Council on the candidate’s behalf.
+            </li><br>
+        </ul>
+    </mat-expansion-panel>
+<br><br><br>
+  
+</mat-accordion>
+</div>
