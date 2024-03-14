@@ -16,8 +16,8 @@ export class HomeUserComponent implements OnInit{
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    /*const email = localStorage.getItem('theUser');
-    document.getElementById("email-value").innerHTML = email;*/
+    const email = localStorage.getItem('theUser');
+    document.getElementById("email-value").innerHTML = email;
     this.email = localStorage.getItem('theUser');
     if (!localStorage.getItem('token') || localStorage.getItem('token') === "") {
       alert("Session Expired. Login again")
@@ -31,6 +31,11 @@ export class HomeUserComponent implements OnInit{
     }else{
       this.router.navigate(['usersinfo', email]);
     }
+  }
+
+  navigateToChat() {
+    const email = localStorage.getItem('theUser');
+    this.router.navigate(['/chat', email]);
   }
 
   navigateToPersonal() {

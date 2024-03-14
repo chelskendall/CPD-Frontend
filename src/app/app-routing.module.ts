@@ -44,6 +44,8 @@ import { EndorsementAddComponent } from './endorsement/endorsement-add/endorseme
 import { EndorsementDetailsComponent } from './endorsement/endorsement-details/endorsement-details.component';
 import { EndorsementListComponent } from './endorsement/endorsement-list/endorsement-list.component';
 
+import { ChatAppComponent } from './chat-app/chat-app.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -53,7 +55,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'users', component: ResetPasswordComponent },
   { path: ':email', component: HomeUserComponent },
-  {path: 'admin', component: AdminComponent},
+
+  { path: 'Administrator', component: AdminComponent },
+  { path: 'chat/:email', component: ChatAppComponent },
 
   {path: 'personal/:email', component: PersonalMainComponent},
   {path: 'user/:email/personal-add', component: PersonalAddComponent},

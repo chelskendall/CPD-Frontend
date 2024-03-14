@@ -1,0 +1,150 @@
+/* Top navigation menu */
+.nav-item {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 14px 16px;
+}
+
+/* Sidebar menu */
+.sidenav {
+height: 100%; /* Full-height */
+width: 160px; /* Set the width of the sidebar */
+position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+z-index: 2; /* Stay on top */
+top: 75px; /* Stay at the top */
+left: 0;
+background-color: #bdbbbb; /* Grey */
+overflow-x: hidden; /* Disable horizontal scroll */
+padding-top: 20px;
+}
+
+/* Sidebar menu links */
+.sidenav a {
+padding: 10px 8px 10px 16px;
+/* text-decoration: underline; */
+font-size: 15px;
+font-weight: 500;
+color: #111;
+display: block;
+}
+
+/* When you mouse over the sidebar links, change their color */
+.sidenav a:hover {
+/* color: #f1f1f1; */
+background-color: #fffefe; /* Grey */
+}
+
+hr {
+margin: 1rem 0;
+border-top: 1px solid rgb(7, 7, 7);
+opacity: 0.25;
+}
+
+/* Style page content */
+.container {
+  margin-top: 10px; /* Add a top margin to avoid content overlay */
+  margin-left: 180px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+  width: 1000px;
+  height: 0px;
+  }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+
+.chat-container {
+  background-color: rgb(252, 235, 225);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  height: calc(100vh - 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-header {
+  height: 50px;
+  background-color: #EDEDED;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 0 15px 0 10px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 125px);
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.message-container {
+    background-color: rgb(235, 235, 235);
+    padding: 7px;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 90%;
+    margin-bottom: 15px;
+  }
+
+  .same-user {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .message-container {
+      background-color: lightskyblue;
+    }
+  
+.chat-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  right: 0;
+  background-color: #EDEDED;
+  padding: 10px 20px;
+}
+
+.form-control {
+    background-color: white;
+    border: 1px solid #D8DDEC;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: black;
+  }
+
+  .user-list-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: calc(100vh - 100px);
+    padding: 10px;
+  }
+  
+    .user-card {
+      display: flex;
+      padding: 10px;
+      cursor: pointer;
+    }
+  

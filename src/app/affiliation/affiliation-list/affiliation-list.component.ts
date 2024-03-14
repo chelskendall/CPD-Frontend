@@ -24,8 +24,8 @@ export class AffiliationListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    /*const email = localStorage.getItem('theUser');
-    document.getElementById("email-value").innerHTML = email;*/
+    const email = localStorage.getItem('theUser');
+    document.getElementById("email-value").innerHTML = email;
     this.email = localStorage.getItem('theUser');
     if (!localStorage.getItem('token') || localStorage.getItem('token') === "") {
       alert("Session Expired. Login again")

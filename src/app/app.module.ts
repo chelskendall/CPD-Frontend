@@ -60,6 +60,11 @@ import { EndorsementAddComponent } from './endorsement/endorsement-add/endorseme
 import { EndorsementDetailsComponent } from './endorsement/endorsement-details/endorsement-details.component';
 import { EndorsementListComponent } from './endorsement/endorsement-list/endorsement-list.component';
 
+import { ChatAppComponent } from './chat-app/chat-app.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { MessagesService } from './chat-app/messages.service';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 
 /*
 ng g s endorsement/endorsement
@@ -109,6 +114,7 @@ ng g class endorsement/endorsement --type=model
     EndorsementAddComponent,
     EndorsementDetailsComponent,
     EndorsementListComponent,
+    ChatAppComponent,
   ],
   imports: [
     FormsModule,
@@ -124,13 +130,16 @@ ng g class endorsement/endorsement --type=model
     ButtonModule,
     ToastModule,
     AngularMaterialModule,
+    SocketIoModule.forRoot(config),
     RouterModule.forRoot([
       {path:'', component: HomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'users', component: ResetPasswordComponent},
       {path: ':email', component: HomeUserComponent},
-      {path: 'admin', component: AdminComponent},
+      
+      {path: 'Administrator', component: AdminComponent},
+      {path: 'chat/:email', component: ChatAppComponent},
 
       {path: 'personal/:email', component: PersonalMainComponent},
       {path: 'user/:email/personal-add', component: PersonalAddComponent},
@@ -169,7 +178,7 @@ ng g class endorsement/endorsement --type=model
 
     ])
   ],
-  providers: [MessageService, DatePipe ],
+  providers: [MessageService, DatePipe, MessagesService ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
