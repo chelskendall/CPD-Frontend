@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { ChatMessage } from './chat-message.model';
 import { MessagesService } from './messages.service';
 import { Router } from '@angular/router';
@@ -95,7 +96,8 @@ export class ChatAppComponent implements OnInit {
   }
 */
 
-  email: string | null | undefined;  
+  email: string | null | undefined;
+  users: any;  
   public newMessage: string = '';
   public messageList: any = [];
 
@@ -103,11 +105,15 @@ export class ChatAppComponent implements OnInit {
     private MessagesService: MessagesService,
     private router: Router){  }
 
+   
+  //youtube code  
+   
   ngOnInit(): void{
     this.email = localStorage.getItem('theUser');
     if (!localStorage.getItem('token') || localStorage.getItem('token') === "") {
       alert("Session Expired. Login again")
     }
+    this.MessagesService.getUsers();
     this.listMessages();
   }
 

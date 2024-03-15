@@ -27,7 +27,7 @@ export class HomeUserComponent implements OnInit{
   navigateToUserProfile() {
     const email = localStorage.getItem('theUser');
     if (email == 'Administrator'){
-      this.router.navigate(['admin']);
+      this.router.navigate(['admin', email]);
     }else{
       this.router.navigate(['usersinfo', email]);
     }

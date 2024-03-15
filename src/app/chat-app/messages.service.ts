@@ -64,12 +64,43 @@ export class MessagesService {
 
   constructor(private socket: Socket) { }
 
+  //youtube code
   public sendMessage(message: string) {
-    this.socket.emit('message', message);
+    this.socket.emit('private message', message);
   }
 
   public listMessages() {
-    return this.socket.fromEvent('Received').pipe(map((data) => data));
+    return this.socket.fromEvent('private message').pipe(map((data) => data));
   }
+
+  public getUsers() {
+    return this.socket.fromEvent('users').pipe(map((data: any) => data))
+  }
+
+  /* swag-coder
+  joinRoom(data): void {
+    this.socket.emit('join', data);
+  }
+
+  getMessage(): Observable<any> {
+    return new Observable<{user: string, message: string}>(observer => {
+      this.socket.on('new message', (data) => {
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+  }
+
+  getStorage() {
+    const storage: string = localStorage.getItem('chats');
+    return storage ? JSON.parse(storage) : [];
+  }
+
+  setStorage(data) {
+    localStorage.setItem('chats', JSON.stringify(data));
+  }
+*/
 
 }

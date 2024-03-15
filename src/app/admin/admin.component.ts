@@ -45,6 +45,13 @@ export class AdminComponent implements OnInit{
     }    
   }
 
+  logout(){
+    localStorage.removeItem('theUser');
+    localStorage.removeItem('theUserAdmin');
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+  }
+
   ngOnDestroy(){
   }
 

@@ -1,5 +1,8 @@
-export class ChatMessage {
+export interface ChatMessage {
 
-    constructor( public msg: string ) {  }
-
+    from?: string;
+    to: string;
+    message: string;
+    date: Date;
+    
 }

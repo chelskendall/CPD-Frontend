@@ -138,7 +138,7 @@ ng g class endorsement/endorsement --type=model
       {path: 'users', component: ResetPasswordComponent},
       {path: ':email', component: HomeUserComponent},
       
-      {path: 'Administrator', component: AdminComponent},
+      {path: 'admin/:email', component: AdminComponent},
       {path: 'chat/:email', component: ChatAppComponent},
 
       {path: 'personal/:email', component: PersonalMainComponent},

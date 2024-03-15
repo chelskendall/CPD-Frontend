@@ -80,6 +80,15 @@ opacity: 0.25;
   margin: 0 15px 0 10px;
 }
 
+.email {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .username {
   font-size: 20px;
   font-weight: 500;

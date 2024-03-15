@@ -41,7 +41,7 @@ hr {
 
 /* Style page content */
 .container {
-  margin-left: 180px; /* Same as the width of the sidebar */
+  margin-left: 120px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
 
@@ -49,4 +49,30 @@ hr {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.containerc{
+  max-width: 1800px;
+  margin: auto;
+  padding: 0 40px;
+  align-items: center;
+}
+
+.join-form {
+  background-color: #b7b7b7;
+  max-width: 100%;
+  padding: 2rem 4rem;
+  border-radius: 20px;
+}
+
+.names {
+  color: #ffffff;
+  font-size: large;
+}
+
+.input-group {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
 }
