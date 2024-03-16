@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { User } from '../models/user.model'
 import { Router } from '@angular/router';
 import  axios  from 'axios';
+import { Socket } from 'ngx-socket-io';
 
 
 @Injectable({
@@ -20,7 +21,11 @@ export class AuthService {
 
   private token: string | null;  
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private socket: Socket) 
+    { 
     this.token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
   }
@@ -51,6 +56,7 @@ export class AuthService {
          (response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('theUser', email);
+          this.socket.emit('sign_in', this.users);
           if (email != 'Administrator'){
             this.router.navigate(['', email]);
           }else if (email == 'Administrator'){    

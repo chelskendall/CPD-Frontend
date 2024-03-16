@@ -25,111 +25,45 @@
   </div>
 
 
-<!-- Chat Room (youtube)-->
+<!-- Chat Room -->
 <!-- Page content -->
+
 <div class="container">
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="user-list-card">
-          <div class="user-card">
-
-          <img [alt]="email"
-                class="avatar"
-          />
-          <p class="username">{{email}}</p>
-
-          </div>
-        </div>
-    </div>
-
-    <div class="col-md-8">
+  <div class="col-md-8">
     <div class="chat-container">
-        <div class="chat-header">
-            <img 
-            class="avatar"/>
-            <p class="email">Chat Room</p>
-        </div>
 
-        <div class="chat-body">
-            <div *ngFor="let newMessage of messageList">
-            <p class="message-container">{{newMessage}}</p>
-            </div>
-        </div>
-
-        <div class="chat-footer">
-            <div class="row">
-            <div class="col-md-10">
-                <div class="form-group mb-0">
-                <input type="text"
-                        placeholder="Type a message"
-                        class="form-control"
-                        [(ngModel)]="newMessage"
-                        (keyup)="$event.keyCode === 13 && sendMessage()"
-                />
-                </div>
-            </div>
-
-            <div class="col-md-2 text-center align-self-center">
-                <button class="btn btn-primary btn-sm px-3"
-                        (click)="sendMessage()">Send
-                </button>
-            </div>
-            </div>
-        </div>
-
-    </div>
-    </div>
-
-</div>
-</div>
-
-
-
-<!--
-<div *ngFor="let message of messageList">
-    <li>
-        {{message}}
-    </li>  
-</div>
-
-<input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button (click)="sendMessage()">Send Message</button>
--->
-
-<!-- https://deepinder.me/creating-a-real-time-app-with-angular-8-and-socket-io-with-nodejs
-<div class="App">
-    <div class="box">
-      <div class="messages">
-        <div *ngFor="let user of messages">
-          {{user.name}}: {{user.message}}
-        </div>
+      <div class="chat-header">
+        <p class="style">&nbsp; &nbsp;Chat Room</p>
       </div>
-      <form [formGroup]="messageForm" class="input-div" (submit)="submitMessage()">
-        <input type="text" placeholder="Type in text" formControlName="message" />
-        <button type="submit">Send</button>
-      </form>
+
+      <div class="chat-body">
+          <div class="message-container">
+            <div *ngFor="let user of messages">
+              {{email}}: {{user.message}}
+            </div>
+          </div>
+
+          <div class="chat-footer">
+            <div class="row">
+              <div class="col-md-10">
+
+                <div class="form-group mb-0 ">
+                    
+                  <form [formGroup]="messageForm" (submit)="submitMessage()">
+                      <input type="text" placeholder="Type a message" class="form-control" formControlName="message" /><br>              
+                          <div class="col-md-2 text-center align-self-center">
+                            <button class="btn btn-primary btn-sm px-3" type="submit">Send</button>
+                          </div>
+                  </form>
+                      
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+
     </div>
   </div>
-  -->
-
-<!-- https://deadsimplechat.com/blog/angular-chat-application-with-socket-io-and-node-js/
-<div class="form-group container">
-    <h1>Angular App</h1>
-
-    <ul id="listOfMessages">
-        <li class="singleMessage" *ngFor="let message of messageList">
-            {{message}}
-        </li>
-    </ul>
-
-    <form (ngSubmit)="onSubmit()" action=""> 
-        <div class="form-group mb-3 fixed-bottom">
-            <input  class="form-control input" type="text" autocomplete="off" required 
-            [(ngModel)]="model.msg" name="msg"
-            />
-            <button type="submit" class="btn btn-outline-secondary button-css" >Send Message</button>
-        </div>
-    </form>
 </div>
--->

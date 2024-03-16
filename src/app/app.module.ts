@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
+import { NgArrayPipesModule } from 'ngx-pipes';
 
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -129,6 +130,7 @@ ng g class endorsement/endorsement --type=model
     ReactiveFormsModule,
     ButtonModule,
     ToastModule,
+    NgArrayPipesModule,
     AngularMaterialModule,
     SocketIoModule.forRoot(config),
     RouterModule.forRoot([
