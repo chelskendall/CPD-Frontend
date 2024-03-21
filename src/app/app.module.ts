@@ -24,7 +24,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HomeComponent } from './home/home.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { MentorComponent } from './mentor/mentor.component';
 
 import { PersonalMainComponent } from './personal/personal-main/personal-main.component';
 import { PersonalAddComponent } from './personal/personal-add/personal-add.component';
@@ -74,6 +76,8 @@ ng g component endorsement/endorsement-details --module app
 ng g component endorsement/endorsement-list --module app
 ng g component endorsement/endorsement-main --module app
 ng g class endorsement/endorsement --type=model
+
+ng g component mentor --module app
 */
 
 
@@ -86,7 +90,9 @@ ng g class endorsement/endorsement --type=model
     ResetPasswordComponent,
     HomeComponent,
     HomeUserComponent,
+    UserProfileComponent,
     AdminComponent,
+    MentorComponent,
     PersonalMainComponent,
     PersonalAddComponent,
     PersonalDetailsComponent,
@@ -139,8 +145,10 @@ ng g class endorsement/endorsement --type=model
       {path: 'register', component: RegisterComponent},
       {path: 'users', component: ResetPasswordComponent},
       {path: ':email', component: HomeUserComponent},
-      
+ 
+      {path: 'usersinfo/:email', component: UserProfileComponent},
       {path: 'admin/:email', component: AdminComponent},
+      {path: 'mentor/:email', component: MentorComponent},
       {path: 'chat/:email', component: ChatAppComponent},
 
       {path: 'personal/:email', component: PersonalMainComponent},

@@ -7,7 +7,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HomeComponent } from './home/home.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { MentorComponent } from './mentor/mentor.component';
 
 import { PersonalMainComponent } from './personal/personal-main/personal-main.component';
 import { PersonalAddComponent } from './personal/personal-add/personal-add.component';
@@ -56,8 +58,10 @@ const routes: Routes = [
   { path: 'users', component: ResetPasswordComponent },
   { path: ':email', component: HomeUserComponent },
 
-  { path: 'admin/:email', component: AdminComponent },
-  { path: 'chat/:email', component: ChatAppComponent },
+  {path: 'usersinfo/:email', component: UserProfileComponent},
+  {path: 'admin/:email', component: AdminComponent},
+  {path: 'mentor/:email', component: MentorComponent},
+  {path: 'chat/:email', component: ChatAppComponent},
 
   {path: 'personal/:email', component: PersonalMainComponent},
   {path: 'user/:email/personal-add', component: PersonalAddComponent},

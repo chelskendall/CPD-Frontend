@@ -1,0 +1,39 @@
+<!-- Top navigation -->
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+          &nbsp; &nbsp; &nbsp;
+        </li>
+      </ul>
+    </nav>
+    <div class="container mt-3"> </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container">
+        <header class="jumbotron">
+          <h1>Introduction to Professional Registration and Continuous Professional Development (CPD)</h1>
+        </header>
+    
+    <div class="containerc">
+      <h1 class ="lead"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mentor Action</strong></h1>
+      <mat-divider fxFlex="1 0"></mat-divider><br>
+   
+      <div class="join-form">
+          
+          <ng-container *ngFor="let userinfo of Response">
+            <ul><li> 
+              <p class="names" (click)="navigateToUserInfo(userinfo.email)"><em>{{ userinfo.email }}</em></p>
+            </li></ul>
+          </ng-container>
+  
+      </div>
+  
+    </div>
+  </div>      

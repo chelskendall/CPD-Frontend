@@ -1,0 +1,200 @@
+<!-- Top navigation -->
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">  
+      <a href=":email" class="navbar-brand">CPD Tracker</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-light btn-sm">Logout</a>
+          &nbsp; &nbsp; &nbsp;
+        </li>
+      </ul>
+    </nav>
+    <div class="container mt-3"> </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container">
+    <header class="jumbotron">
+      <h1>Introduction to Professional Registration and Continuous Professional Development (CPD)</h1>
+    </header>
+
+    <div class="containerc" id="htmlData"><br>
+      <h1 class="lead" id="email">&nbsp; &nbsp; &nbsp;<span id="email-value"></span><span>'s CV Template</span></h1>
+        <mat-divider fxFlex="1 0"></mat-divider><br>
+     
+        <div class="join-form">
+           
+            <!--Section 0-->
+            <h3><strong>Personal Details</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 0">
+                  <tr>
+                    <th >First Name</th>
+                    <th >Last Name</th>
+                    <th >Phone Number</th>
+                    <th >Email Address</th>
+                    <th >Mailing Address</th>
+                    <th >Professional Statement</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.firstName">{{ item.firstName }}</td>
+                    <td *ngIf="item.lastName">{{ item.lastName }}</td>
+                    <td *ngIf="item.phone">{{ item.phone }}</td>
+                    <td *ngIf="item.emailAddress">{{ item.emailAddress }}</td>
+                    <td *ngIf="item.mailAddress">{{ item.mailAddress }}</td>
+                    <td *ngIf="item.statement">{{ item.statement }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 1-->
+            <h3><strong>Employment History</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 1">
+                  <tr>
+                    <th >Job Title</th>
+                    <th >Employer Name</th>
+                    <th >Start Date</th>
+                    <th >End Date</th>
+                    <th >Responsibilities</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.jobTitle">{{ item.jobTitle }}</td>
+                    <td *ngIf="item.employer">{{ item.employer }}</td>
+                    <td *ngIf="item.employStart">{{ item.employStart }}</td>
+                    <td *ngIf="item.employEnd">{{ item.employEnd }}</td>
+                    <td *ngIf="item.responsibilities">{{ item.responsibilities }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 2-->
+            <h3><strong>Academic Qualifications</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 2">
+                  <tr>
+                    <th >Establishment</th>
+                    <th >Course Title</th>
+                    <th >Start Date</th>
+                    <th >End Date</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.establishment">{{ item.establishment }}</td>
+                    <td *ngIf="item.courseTitle">{{ item.courseTitle }}</td>
+                    <td *ngIf="item.academicStart">{{ item.academicStart }}</td>
+                    <td *ngIf="item.academicEnd">{{ item.academicEnd }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 3-->
+            <h3><strong>Professional Affiliations</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 3">
+                  <tr>
+                    <th >Organization</th>
+                    <th >Title</th>
+                    <th >Start Date</th>
+                    <th >End Date</th>
+                    <th >Type</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.organization">{{ item.organization }}</td>
+                    <td *ngIf="item.affiliateTitle">{{ item.affiliateTitle }}</td>
+                    <td *ngIf="item.affiliateStart">{{ item.affiliateStart }}</td>
+                    <td *ngIf="item.affiliateEnd">{{ item.affiliateEnd }}</td>
+                    <td *ngIf="item.typeAffiliation">{{ item.typeAffiliation }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 4-->
+            <h3><strong>Professional Services</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 4">
+                  <tr>
+                    <th >Title</th>
+                    <th >Description</th>
+                    <th >Service Type</th>
+                    <th >Date</th>
+                    <th >Notes</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.serviceTitle">{{ item.serviceTitle }}</td>
+                    <td *ngIf="item.serviceDescribe">{{ item.serviceDescribe }}</td>
+                    <td *ngIf="item.typeServices">{{ item.typeServices }}</td>
+                    <td *ngIf="item.serviceDate">{{ item.serviceDate }}</td>
+                    <td *ngIf="item.serviceNotes">{{ item.serviceNotes }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 5-->
+            <h3><strong>CPD Training</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 5">
+                  <tr>
+                    <th >Type</th>
+                    <th >Title</th>
+                    <th >Description</th>
+                    <th >Start Date</th>
+                    <th >End Date</th>
+                    <th >Hours</th>
+                    <th >Reflection</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.typeCPD">{{ item.typeCPD }}</td>
+                    <td *ngIf="item.cpdTitle">{{ item.cpdTitle }}</td>
+                    <td *ngIf="item.cpdDescribe">{{ item.cpdDescribe }}</td>
+                    <td *ngIf="item.cpdStart">{{ item.cpdStart }}</td>
+                    <td *ngIf="item.cpdEnd">{{ item.cpdEnd }}</td>
+                    <td *ngIf="item.cpdHours">{{ item.cpdHours }}</td>
+                    <td *ngIf="item.cpdReflect">{{ item.cpdReflect }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+
+            <!--Section 6-->
+            <h3><strong>Endorsements</strong></h3> 
+            <table>
+              <ng-container *ngFor="let profile of Response; let i = index">
+                <ng-container *ngIf="i === 6">
+                  <tr>
+                    <th >Referee Name</th>
+                    <th >Organization</th>
+                    <th >Phone Number</th>
+                    <th >Submission Date</th>
+                  </tr>
+                  <tr *ngFor="let item of profile.data">
+                    <td *ngIf="item.refereeName">{{ item.refereeName }}</td>
+                    <td *ngIf="item.refereePlace">{{ item.refereePlace }}</td>
+                    <td *ngIf="item.refereePhone">{{ item.refereePhone }}</td>
+                    <td *ngIf="item.refereeDate">{{ item.refereeDate }}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </table><br><br>
+    
+        </div> <!--join-form-->
+      <br><br>
+    </div> <!--containerc-->
+            <div class="col-md-4 text-right centre">
+              <button class="btn btn-success btn-block" (click)="openPDF()">Download CV Template PDF</button>
+            </div>
+      <br><br>
+  </div>  
