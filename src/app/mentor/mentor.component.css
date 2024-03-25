@@ -1,81 +1,78 @@
 /* Top navigation menu */
 .nav-item {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 14px 16px;
-  }
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 14px 16px;
+}
 
 /* Sidebar menu */
 .sidenav {
-  height: 100%; /* Full-height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 2; /* Stay on top */
-  top: 75px; /* Stay at the top */
-  left: 0;
-  background-color: #bdbbbb; /* Grey */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+height: 100%; /* Full-height */
+width: 160px; /* Set the width of the sidebar */
+position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+z-index: 2; /* Stay on top */
+top: 75px; /* Stay at the top */
+left: 0;
+background-color: #bdbbbb; /* Grey */
+overflow-x: hidden; /* Disable horizontal scroll */
+padding-top: 20px;
 }
 
 /* Sidebar menu links */
 .sidenav a {
-  padding: 10px 8px 10px 16px;
- /* text-decoration: underline; */
-  font-size: 15px;
-  font-weight: 500;
-  color: #111;
-  display: block;
+padding: 10px 8px 10px 16px;
+/* text-decoration: underline; */
+font-size: 15px;
+font-weight: 500;
+color: #111;
+display: block;
 }
 
 /* When you mouse over the sidebar links, change their color */
 .sidenav a:hover {
- /* color: #f1f1f1; */
-  background-color: #fffefe; /* Grey */
+/* color: #f1f1f1; */
+background-color: #fffefe; /* Grey */
 }
 
 hr {
-  margin: 1rem 0;
-  border-top: 1px solid rgb(7, 7, 7);
-  opacity: 0.25;
+margin: 1rem 0;
+border-top: 1px solid rgb(7, 7, 7);
+opacity: 0.25;
 }
 
 /* Style page content */
 .container {
-  margin-left: 120px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
+margin-left: 120px; /* Same as the width of the sidebar */
+padding: 0px 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+.containerc{
+max-width: 1800px;
+margin: auto;
+padding: 0 40px;
+align-items: center;
 }
 
 .join-form {
-  background-color: #f3eae5;
-  max-width: 100%;
-  padding: 2rem 4rem;
-  border-radius: 20px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 0.5px solid #8e7c70;
-  color:  #8e7c70;
+background-color: #b7b7b7;
+max-width: 100%;
+padding: 2rem 4rem;
+border-radius: 20px;
 }
 
 .names {
-  color: #ffffff;
-  font-size: large;
+color: #ffffff;
+font-size: large;
 }
 
 .input-group {
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
+margin-bottom: 0.5rem;
+display: flex;
+flex-direction: column;
+max-width: 300px;
 }

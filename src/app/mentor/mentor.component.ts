@@ -19,7 +19,7 @@ export class MentorComponent implements OnInit{
   }  
 
   navigateToUserInfo(email: string): void {
-    localStorage.setItem('theUserAdmin', email);
+    localStorage.setItem('theUserMentor', email);
     this.router.navigate(['/usersinfo', email]);
   }
 
@@ -35,7 +35,7 @@ export class MentorComponent implements OnInit{
 
   logout(){
     localStorage.removeItem('theUser');
-    localStorage.removeItem('theUserAdmin');
+    localStorage.removeItem('theUserMentor');
     localStorage.removeItem('token');
     this.router.navigate(['']);
   }

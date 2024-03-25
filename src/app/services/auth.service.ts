@@ -23,8 +23,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient, 
-    private router: Router, 
-    private socket: Socket) 
+    private router: Router,) 
     { 
     this.token = localStorage.getItem('token');
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
@@ -56,18 +55,20 @@ export class AuthService {
          (response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('theUser', email);
-          this.socket.emit('sign_in', this.users);
-          if (email != 'Administrator'){
+          if (email != 'Administrator' || 'Mentor'){
             this.router.navigate(['', email]);
-          }else if (email == 'Administrator'){    
+          }else if (email == 'Administrator' || 'Mentor'){    
             this.getListUsers();         
             this.router.navigate(['', email]);
           }
          },
          error => {
-           if (error.status === 401) {
+           if (error.status === 400) {
              this.errorMessage.emit(error.error.message);
            }
+           if (error.status === 404) {
+            this.errorMessage.emit(error.error.message);
+          }
          }
        ); 
   }

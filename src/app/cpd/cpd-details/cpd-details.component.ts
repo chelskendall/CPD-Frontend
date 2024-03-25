@@ -39,11 +39,11 @@ export class CpdDetailsComponent implements OnInit {
       this.getId = this.activatedRoute.snapshot.paramMap.get('id');
       this.CpdService.getCpd(this.getId).subscribe((data: any) => {
       this.updateForm.setValue({
-        typeCPD: [data.data.typeCPD, [Validators.required]],
+        typeCPD: data.data.typeCPD,
         cpdTitle: data.data.cpdTitle,
         cpdDescribe: data.data.cpdDescribe,
-        cpdStart: [data.data.cpdStart, [Validators.required]],
-        cpdEnd: [data.data.cpdEnd, [Validators.required]],
+        cpdStart: data.data.cpdStart,
+        cpdEnd: data.data.cpdEnd,
         cpdHours: data.data.cpdHours,
         cpdReflect: data.data.cpdReflect,
         });

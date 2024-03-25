@@ -40,10 +40,10 @@ export class ServiceDetailsComponent implements OnInit {
       this.getId = this.activatedRoute.snapshot.paramMap.get('id');
       this.ServiceService.getService(this.getId).subscribe((data: any) => {
       this.updateForm.setValue({
-        typeServices: [data.data.typeServices, [Validators.required]],
+        typeServices: data.data.typeServices,
         serviceTitle: data.data.serviceTitle,
         serviceDescribe: data.data.serviceDescribe,
-        serviceDate: [data.data.serviceDate, [Validators.required]],
+        serviceDate: data.data.serviceDate,
         serviceNotes: data.data.serviceNotes,
         });
       });

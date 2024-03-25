@@ -39,11 +39,11 @@ export class AffiliationDetailsComponent implements OnInit {
       this.getId = this.activatedRoute.snapshot.paramMap.get('id');
       this.AffiliationService.getAffiliation(this.getId).subscribe((data: any) => {
       this.updateForm.setValue({
-        typeAffiliation: [data.data.typeAffiliation, [Validators.required]],
+        typeAffiliation: data.data.typeAffiliation,
         organization: data.data.organization,
         affiliateTitle: data.data.affiliateTitle,
-        affiliateStart: [data.data.affiliateStart, [Validators.required]],
-        affiliateEnd: [data.data.affiliateEnd, [Validators.required]],
+        affiliateStart: data.data.affiliateStart,
+        affiliateEnd: data.data.affiliateEnd,
         });
       });
       this.updateForm = this.formBuilder.group({

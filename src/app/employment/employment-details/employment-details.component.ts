@@ -28,8 +28,8 @@ export class EmploymentDetailsComponent implements OnInit {
       this.updateForm.setValue({
         jobTitle: data.data.jobTitle,
         employer: data.data.employer,
-        employStart: [data.data.employStart, [Validators.required]],
-        employEnd: [data.data.employEnd, [Validators.required]],
+        employStart: data.data.employStart,
+        employEnd: data.data.employEnd,
         responsibilities: data.data.responsibilities,
         });
       });

@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit{
 
   ngOnInit(): void {
     const email = localStorage.getItem('theUser');
+    
     const emailAdmin = localStorage.getItem('theUserAdmin');
     if (email != 'Administrator'){
       this.AuthService.getUserInfo();
@@ -31,6 +32,15 @@ export class UserProfileComponent implements OnInit{
     }else if(email == 'Administrator'){
       this.AuthService.getUserInfoAdmin(emailAdmin);
       document.getElementById('email-value').innerHTML = emailAdmin;      
+    }
+
+    const emailMentor = localStorage.getItem('theUserMentor');
+    if (email != 'Mentor'){
+      this.AuthService.getUserInfo();
+      document.getElementById('email-value').innerHTML = email; 
+    }else if(email == 'Mentor'){
+      this.AuthService.getUserInfoAdmin(emailMentor);
+      document.getElementById('email-value').innerHTML = emailMentor;      
     }
   }
 
@@ -56,6 +66,7 @@ export class UserProfileComponent implements OnInit{
   logout(){
     localStorage.removeItem('theUser');
     localStorage.removeItem('theUserAdmin');
+    localStorage.removeItem('theUserMentor');
     localStorage.removeItem('token');
     this.router.navigate(['']);
   }

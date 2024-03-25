@@ -40,8 +40,8 @@ export class AcademicDetailsComponent implements OnInit {
       this.updateForm.setValue({
         establishment: data.data.establishment,
         courseTitle: data.data.courseTitle,
-        academicStart: [data.data.academicStart, [Validators.required]],
-        academicEnd: [data.data.academicEnd, [Validators.required]],
+        academicStart: data.data.academicStart,
+        academicEnd: data.data.academicEnd,
         });
       });
       this.updateForm = this.formBuilder.group({

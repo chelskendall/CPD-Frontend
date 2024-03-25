@@ -29,8 +29,8 @@ export class PersonalDetailsComponent implements OnInit {
       this.updateForm.setValue({
         firstName: data.data.firstName,
         lastName: data.data.lastName,
-        phone: [data.data.phone, [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-        emailAddress: [data.data.emailAddress, [Validators.email]],
+        phone: data.data.phone,
+        emailAddress: data.data.emailAddress,
         mailAddress: data.data.mailAddress,
         statement: data.data.statement
         });

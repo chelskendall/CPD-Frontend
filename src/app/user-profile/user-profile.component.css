@@ -78,9 +78,16 @@ hr {
     width: 100%;
   }
 
-  th, td {
-    border: 0.5px solid #8e7c70;
+  th {
+    border: 1px solid #8d715e;
     color:  #8e7c70;
+    border-width: medium;
+  }
+
+  td {
+    border: 1px solid #8d715e;
+    color:  #000000;
+    border-width: medium;
   }
   
   .names {
