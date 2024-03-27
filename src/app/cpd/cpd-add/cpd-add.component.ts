@@ -4,7 +4,6 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Cpd } from 'src/app/cpd/cpd.model';
 import { CpdService } from 'src/app/cpd/cpd.service';
 
 

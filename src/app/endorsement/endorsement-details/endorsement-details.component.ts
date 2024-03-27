@@ -1,8 +1,6 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Endorsement } from 'src/app/endorsement/endorsement.model';
 import { EndorsementService } from 'src/app/endorsement/endorsement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -44,8 +42,8 @@ export class EndorsementDetailsComponent implements OnInit {
         });
       });
       this.updateForm = this.formBuilder.group({
-        refereeName: [''],
-        refereePlace: [''],
+        refereeName: ['', [Validators.required]],
+        refereePlace: ['', [Validators.required]],
         refereePhone: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         refereeDate: ['', [Validators.required]],
       })

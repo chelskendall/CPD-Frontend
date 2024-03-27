@@ -1,5 +1,4 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
-import { Employment } from 'src/app/employment/employment.model';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { EmploymentService } from 'src/app/employment/employment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -34,11 +33,11 @@ export class EmploymentDetailsComponent implements OnInit {
         });
       });
       this.updateForm = this.formBuilder.group({
-        jobTitle: [''],
-        employer: [''],
+        jobTitle: ['', [Validators.required]],
+        employer: ['', [Validators.required]],
         employStart: ['', [Validators.required]],
         employEnd: ['', [Validators.required]],
-        responsibilities: [''],
+        responsibilities: ['', [Validators.required]],
       })
     }
 

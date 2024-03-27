@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Academic } from 'src/app/academic/academic.model';
 import { AcademicService } from "src/app/academic/academic.service";
 import { Router } from '@angular/router';
 

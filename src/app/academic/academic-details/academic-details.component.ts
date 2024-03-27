@@ -1,8 +1,6 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Academic } from 'src/app/academic/academic.model';
 import { AcademicService } from 'src/app/academic/academic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -18,8 +16,6 @@ export class AcademicDetailsComponent implements OnInit {
   updateForm: FormGroup;
   email: string | null | undefined;
 
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  typeArray: any = ['Membership', 'Certificate', 'Award', 'Grant', 'Other'];
   fileArr = [];
   imgArr = [];
   fileObj = [];

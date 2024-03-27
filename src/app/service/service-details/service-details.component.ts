@@ -1,8 +1,7 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Service } from 'src/app/service/service.model';
 import { ServiceService } from 'src/app/service/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";

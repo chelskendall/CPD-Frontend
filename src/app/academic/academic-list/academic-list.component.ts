@@ -1,7 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AcademicService } from "src/app/academic/academic.service";
 import { Router } from '@angular/router';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 
 @Component({

@@ -1,8 +1,7 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Cpd } from 'src/app/cpd/cpd.model';
 import { CpdService } from 'src/app/cpd/cpd.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -50,12 +49,12 @@ export class CpdDetailsComponent implements OnInit {
       });
       this.updateForm = this.formBuilder.group({
         typeCPD: ['', [Validators.required]],
-        cpdTitle: [''],
-        cpdDescribe: [''],
+        cpdTitle: ['', [Validators.required]],
+        cpdDescribe: ['', [Validators.required]],
         cpdStart: ['', [Validators.required]],
         cpdEnd: ['', [Validators.required]],
-        cpdHours: [''],
-        cpdReflect: [''],
+        cpdHours: ['', [Validators.required]],
+        cpdReflect: ['', [Validators.required]],
       })
     }
 

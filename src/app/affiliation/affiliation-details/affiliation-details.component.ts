@@ -1,8 +1,7 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Affiliation } from 'src/app/affiliation/affiliation.model';
 import { AffiliationService } from 'src/app/affiliation/affiliation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -48,8 +47,8 @@ export class AffiliationDetailsComponent implements OnInit {
       });
       this.updateForm = this.formBuilder.group({
         typeAffiliation: ['', [Validators.required]],
-        organization: [''],
-        affiliateTitle: [''],
+        organization: ['', [Validators.required]],
+        affiliateTitle: ['', [Validators.required]],
         affiliateStart: ['', [Validators.required]],
         affiliateEnd: ['', [Validators.required]],
       })

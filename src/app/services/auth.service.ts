@@ -1,10 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 import { User } from '../models/user.model'
 import { Router } from '@angular/router';
 import  axios  from 'axios';
-import { Socket } from 'ngx-socket-io';
 
 
 @Injectable({

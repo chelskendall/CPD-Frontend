@@ -1,6 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Endorsement } from 'src/app/endorsement/endorsement.model';
 import { EndorsementService } from 'src/app/endorsement/endorsement.service';
 
 @Component({

@@ -4,7 +4,6 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Affiliation } from 'src/app/affiliation/affiliation.model';
 import { AffiliationService } from 'src/app/affiliation/affiliation.service';
 
 

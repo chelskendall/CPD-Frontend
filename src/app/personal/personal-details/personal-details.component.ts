@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, NgZone } from '@angular/core';
-import { Personal } from 'src/app/personal/personal.model';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { PersonalService } from 'src/app/personal/personal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -36,12 +35,12 @@ export class PersonalDetailsComponent implements OnInit {
         });
       });
       this.updateForm = this.formBuilder.group({
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
         phone: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
         emailAddress: ['', [Validators.email]],
-        mailAddress: [''],
-        statement: ['']
+        mailAddress: ['', [Validators.required]],
+        statement: ['', [Validators.required]]
       })
     }
 

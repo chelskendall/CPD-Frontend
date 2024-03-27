@@ -1,6 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Affiliation } from 'src/app/affiliation/affiliation.model';
 import { AffiliationService } from 'src/app/affiliation/affiliation.service';
 
 @Component({

@@ -1,6 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cpd } from 'src/app/cpd/cpd.model';
 import { CpdService } from 'src/app/cpd/cpd.service';
 
 @Component({

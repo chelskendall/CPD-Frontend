@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Employment } from 'src/app/employment/employment.model';
 import { EmploymentService } from 'src/app/employment/employment.service';
 
 
@@ -39,7 +38,6 @@ export class EmploymentAddComponent implements OnInit {
       employStart: ['', [Validators.required]],
       employEnd: ['', [Validators.required]],
       responsibilities: ['', [Validators.required]],
-      files: [''],
     }); 
   }
 

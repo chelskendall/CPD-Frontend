@@ -105,42 +105,6 @@
           </mat-form-field><br><br>
     </div>
 </mat-card>
-     
-        <!--under input: (dateChange)="formatDate($event)" -->
-        
-<!-- <mat-date-range-input [rangePicker]="picker" [formGroup]="employmentForm"> 
-
-  <mat-card>
-        <mat-form-field>
-
-          <mat-label>Choose Date Range</mat-label>
-
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate 
-                   formControlName="employStart" 
-                   placeholder="Start Date">
-            <input matEndDate formControlName="employEnd" placeholder="End Date">
-          </mat-date-range-input>
-          
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-          
-          <mat-error *ngIf="handleError('employStart', 'required')">
-            Start date is required
-          </mat-error>
-          <mat-error *ngIf="handleError('employEnd', 'required')">
-            End date is required
-          </mat-error>
-
-        </mat-form-field>
-
-        <p><em>
-          Start Date: {{employmentForm.value.employStart | date}}<br>
-          End Date: {{employmentForm.value.employEnd | date}}
-        </em></p>
-  </mat-card>
-  <br><br>
-  -->
 
     <!-- Resume normal form -->
 
@@ -156,7 +120,7 @@
           </textarea>
         </div><br>
   
-  <!--File Upload Field-->
+  <!--Submit Button-->
         
         <p-button
         label="Submit"

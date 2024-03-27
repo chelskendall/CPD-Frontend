@@ -3,8 +3,6 @@ import { User } from 'src/app/models/user.model'
 import { Router } from '@angular/router'; 
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
-import { passwordMatchValidator } from '../helpers/password-match.directive';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +13,10 @@ import { passwordMatchValidator } from '../helpers/password-match.directive';
 export class RegisterComponent implements OnInit {
 
   errorMessage: string | undefined;
-  //email: any;
   
    constructor(
     public AuthService: AuthService, 
     private router: Router,
-    //private usersSub: Subscription
     ) 
   { 
     this.AuthService.errorMessage.subscribe(message => {
