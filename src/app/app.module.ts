@@ -69,18 +69,6 @@ import { MessagesService } from './chat-app/messages.service';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 
-/*
-ng g s endorsement/endorsement
-ng g component resetpassword/endorsement-add --module app
-ng g component endorsement/endorsement-details --module app
-ng g component endorsement/endorsement-list --module app
-ng g component endorsement/endorsement-main --module app
-ng g class endorsement/endorsement --type=model
-
-ng g component mentor --module app
-*/
-
-
 @NgModule({
   declarations: [
     DragDropFileUploadDirective,
